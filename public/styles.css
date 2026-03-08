@@ -782,6 +782,23 @@ h3 {
   gap: 0.85rem;
 }
 
+.team-focus-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.inset-panel {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.compact-map-shell,
+.compact-map-shell .leaflet-ops-map {
+  min-height: 24rem;
+}
+
 .employee-selector-card {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -835,7 +852,7 @@ h3 {
 }
 
 .employee-panel {
-  margin-top: 1rem;
+  margin-top: 0.6rem;
 }
 
 .employee-panel-card {
@@ -1123,7 +1140,8 @@ select:focus {
   .map-grid,
   .dashboard-grid,
   .dispatch-summary-grid,
-  .portal-grid {
+  .portal-grid,
+  .team-focus-grid {
     grid-template-columns: 1fr;
   }
 

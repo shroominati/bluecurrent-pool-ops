@@ -20,8 +20,11 @@ const state = {
   fleetMapLayers: null,
   focusedMap: null,
   focusedMapLayers: null,
+  employeeMap: null,
+  employeeMapLayers: null,
   lastFleetMapFitKey: "",
   lastFocusedMapFitKey: "",
+  lastEmployeeMapFitKey: "",
   deferredPrompt: null,
   apiBase: window.POOL_OPS_API_BASE || window.WRECK_API_BASE || window.REVEAL_API_BASE || "",
 };
@@ -72,6 +75,7 @@ const refs = {
   focusedMap: document.getElementById("focusedMap"),
   fleetSpotlight: document.getElementById("fleetSpotlight"),
   focusedRouteRail: document.getElementById("focusedRouteRail"),
+  employeeTrackingMap: document.getElementById("employeeTrackingMap"),
   routeBoard: document.getElementById("routeBoard"),
   visitFeed: document.getElementById("visitFeed"),
   employeeBoard: document.getElementById("employeeBoard"),
@@ -435,11 +439,15 @@ function heartbeatTrailForEmployee(employeeId) {
 }
 
 function ensureLeafletMap(kind) {
-  const isFleet = kind === "fleet";
-  const host = isFleet ? refs.opsMap : refs.focusedMap;
-  const currentMap = isFleet ? state.fleetMap : state.focusedMap;
-  const containerId = isFleet ? "leafletFleetMap" : "leafletFocusedMap";
-  const overlayId = isFleet ? "fleetMapOverlayCard" : "focusedMapOverlayCard";
+  const config =
+    kind === "fleet"
+      ? ["opsMap", "fleetMap", "fleetMapLayers", "leafletFleetMap", "fleetMapOverlayCard"]
+      : kind === "employee"
+        ? ["employeeTrackingMap", "employeeMap", "employeeMapLayers", "leafletEmployeeMap", "employeeMapOverlayCard"]
+        : ["focusedMap", "focusedMap", "focusedMapLayers", "leafletFocusedMap", "focusedMapOverlayCard"];
+  const [hostKey, mapKey, layersKey, containerId, overlayId] = config;
+  const host = refs[hostKey];
+  const currentMap = state[mapKey];
 
   if (!window.L || !host) {
     return false;
@@ -477,19 +485,16 @@ function ensureLeafletMap(kind) {
     employees: window.L.layerGroup().addTo(map),
   };
 
-  if (isFleet) {
-    state.fleetMap = map;
-    state.fleetMapLayers = layers;
-  } else {
-    state.focusedMap = map;
-    state.focusedMapLayers = layers;
-  }
+  state[mapKey] = map;
+  state[layersKey] = layers;
 
   return true;
 }
 
 function setMapOverlayCard(kind, content) {
-  const overlay = document.getElementById(kind === "fleet" ? "fleetMapOverlayCard" : "focusedMapOverlayCard");
+  const overlay = document.getElementById(
+    kind === "fleet" ? "fleetMapOverlayCard" : kind === "employee" ? "employeeMapOverlayCard" : "focusedMapOverlayCard",
+  );
   if (overlay) {
     overlay.innerHTML = content;
   }
@@ -1050,6 +1055,106 @@ function renderFocusedRouteMap() {
     .join("");
 }
 
+function renderEmployeeTrackingMap() {
+  const employee = (state.overview?.employees || []).find((item) => item.id === state.activeMapEmployeeId) || null;
+  const plan = (state.overview?.routePlans || []).find((item) => item.employeeId === state.activeMapEmployeeId) || null;
+
+  if (!employee) {
+    refs.employeeTrackingMap.innerHTML = "<article class='muted-card'>Select an employee to view live tracking.</article>";
+    state.employeeMap = null;
+    state.employeeMapLayers = null;
+    return;
+  }
+
+  if (!ensureLeafletMap("employee")) {
+    refs.employeeTrackingMap.innerHTML = "<article class='muted-card'>Map engine unavailable in this browser.</article>";
+    return;
+  }
+
+  state.employeeMap.invalidateSize();
+  Object.values(state.employeeMapLayers).forEach((layer) => layer.clearLayers());
+
+  const color = routeColorForEmployee(employee.id);
+  const focusPoints = [];
+  const routePoints = plan ? planDisplayPoints(plan).map((point) => [point.lat, point.lon]) : [];
+  routePoints.forEach((point) => focusPoints.push(point));
+
+  if (routePoints.length >= 2) {
+    window.L.polyline(routePoints, {
+      color,
+      weight: 7,
+      opacity: 0.92,
+      lineCap: "round",
+    }).addTo(state.employeeMapLayers.routes);
+  }
+
+  const trailPoints = heartbeatTrailForEmployee(employee.id).map((point) => [point.lat, point.lon]);
+  trailPoints.forEach((point) => focusPoints.push(point));
+  if (trailPoints.length >= 2) {
+    window.L.polyline(trailPoints, {
+      color,
+      weight: 10,
+      opacity: 0.18,
+      lineCap: "round",
+    }).addTo(state.employeeMapLayers.trails);
+  }
+
+  if (plan) {
+    plan.stops.forEach((stop) => {
+      const stopLatLng = [stop.coordinates.lat, stop.coordinates.lon];
+      focusPoints.push(stopLatLng);
+      window.L.circleMarker(stopLatLng, {
+        radius: 6,
+        color,
+        weight: 2,
+        fillColor: "#ffffff",
+        fillOpacity: 0.95,
+      })
+        .bindTooltip(`${stop.sequence}. ${stop.customerName}<br>${stop.address}`, { direction: "top" })
+        .addTo(state.employeeMapLayers.stops);
+    });
+  }
+
+  const position = latestEmployeeFieldPosition(employee.id);
+  if (position) {
+    const markerLatLng = [position.lat, position.lon];
+    focusPoints.push(markerLatLng);
+    const markerPlan = plan || { employeeId: employee.id, totalPools: 0, totalMiles: 0 };
+    window.L.marker(markerLatLng, {
+      icon: createEmployeeMarker(markerPlan, employee, true),
+      keyboard: false,
+    })
+      .addTo(state.employeeMapLayers.employees)
+      .bindTooltip(`${employee.name}<br>${plan ? `${plan.totalPools} stops • ${plan.totalMiles} mi` : "Awaiting route build"}`, {
+        direction: "top",
+      });
+  }
+
+  const fitKey = `${employee.id}:${plan?.totalPools || 0}:${position?.lat || ""}:${position?.lon || ""}:${trailPoints.length}`;
+  if (focusPoints.length && state.lastEmployeeMapFitKey !== fitKey) {
+    state.employeeMap.fitBounds(focusPoints, { padding: [34, 34] });
+    state.lastEmployeeMapFitKey = fitKey;
+  }
+
+  setMapOverlayCard(
+    "employee",
+    `
+      <p class="mini-label">Employee live map</p>
+      <h3>${escapeHtml(employee.name)}</h3>
+      <p class="meta-copy">${
+        plan
+          ? `${plan.totalPools} stops • ${plan.totalMiles} mi • ${plan.fuelGallons} gal`
+          : "No route assigned for this date."
+      }</p>
+      <div class="map-overlay-stats">
+        <span>${heartbeatTrailForEmployee(employee.id).length} live pings</span>
+        <span>${employee.todayVisits.length} visits logged</span>
+        <span>${employee.planSummary?.completedPools || 0}/${employee.planSummary?.totalPools || plan?.totalPools || 0} done</span>
+      </div>
+    `,
+  );
+}
+
 function renderRouteBoard() {
   const plans = state.overview?.routePlans || [];
   if (!plans.length) {
@@ -1363,19 +1468,34 @@ function renderEmployeePanel() {
 }
 
 function renderPayrollBoard() {
+  if (!refs.payrollBoard) {
+    return;
+  }
+
   const payroll = state.overview?.payrollHub;
   if (!payroll) {
     return;
   }
 
+  const selectedEmployeeId = state.activeMapEmployeeId || state.activeEmployeeId;
+  const selectedPayroll =
+    payroll.employees.find((employee) => employee.id === selectedEmployeeId) || payroll.employees[0] || null;
+
+  if (!selectedPayroll) {
+    refs.payrollBoard.innerHTML = "<article class='muted-card'>No payroll details available.</article>";
+    return;
+  }
+
   refs.payrollBoard.innerHTML = `
     <article class="list-card">
-      <h3>${payroll.isManagerView ? "Team payroll projection" : "Your pay hub"}</h3>
-      <p class="meta-copy">${formatMoney(payroll.totalProjectedGross)} projected wages + ${formatMoney(
-        payroll.totalProjectedBonus || 0,
-      )} projected sales bonus for ${state.serviceDate}</p>
+      <h3>${payroll.isManagerView ? `${escapeHtml(selectedPayroll.name)} payroll` : "Your pay hub"}</h3>
+      <p class="meta-copy">${
+        payroll.isManagerView
+          ? `Showing only the selected employee for ${state.serviceDate}.`
+          : `${formatMoney(payroll.totalProjectedGross)} projected wages + ${formatMoney(payroll.totalProjectedBonus || 0)} projected sales bonus for ${state.serviceDate}`
+      }</p>
     </article>
-    ${payroll.employees
+    ${[selectedPayroll]
       .map(
         (employee) => `
           <article class="list-card">
@@ -1918,6 +2038,7 @@ function renderOverview() {
   applyWorkspaceVisibility();
   renderFleetMap();
   renderFocusedRouteMap();
+  renderEmployeeTrackingMap();
   renderRouteBoard();
   renderVisitFeed();
   renderEmployeeBoard();
@@ -2184,6 +2305,7 @@ refs.routeBoard.addEventListener("click", (event) => {
   applyWorkspaceVisibility();
   renderFleetMap();
   renderFocusedRouteMap();
+  renderEmployeeTrackingMap();
   renderRouteBoard();
   renderEmployeeBoard();
   renderEmployeeTabs();
@@ -2208,6 +2330,7 @@ refs.employeeBoard.addEventListener("click", (event) => {
   applyWorkspaceVisibility();
   renderFleetMap();
   renderFocusedRouteMap();
+  renderEmployeeTrackingMap();
   renderRouteBoard();
   renderEmployeeBoard();
   renderEmployeeTabs();
@@ -2232,6 +2355,7 @@ refs.fleetSpotlight.addEventListener("click", (event) => {
   applyWorkspaceVisibility();
   renderFleetMap();
   renderFocusedRouteMap();
+  renderEmployeeTrackingMap();
   renderRouteBoard();
   renderEmployeeBoard();
   renderEmployeeTabs();
@@ -2443,6 +2567,7 @@ refs.employeeSelect.addEventListener("change", (event) => {
   applyWorkspaceVisibility();
   renderFleetMap();
   renderFocusedRouteMap();
+  renderEmployeeTrackingMap();
   renderRouteBoard();
   renderEmployeeBoard();
   renderEmployeeTabs();
