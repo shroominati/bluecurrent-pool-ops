@@ -138,6 +138,10 @@ function apiPath(path) {
   return `${state.apiBase}${path}`;
 }
 
+function preferredServiceDate() {
+  return state.config?.suggestedServiceDate || state.serviceDate;
+}
+
 function storeToken(token) {
   state.token = token || "";
   if (state.token) {
@@ -1971,6 +1975,7 @@ function startLiveTracking() {
 async function loadAuthenticatedApp() {
   const me = await api("/api/auth/me");
   state.viewer = me.viewer;
+  state.serviceDate = preferredServiceDate();
   state.activeWorkspace = isCustomerViewer() ? "customer" : isManager() ? "dispatch" : "field";
   showApp();
   await refreshOverview();
@@ -2478,6 +2483,7 @@ refs.expenseForm.addEventListener("submit", async (event) => {
 async function init() {
   try {
     state.config = await api("/api/config");
+    state.serviceDate = preferredServiceDate();
     renderDemoAccounts();
     setDefaultDateTimes();
     syncWorkflowFieldVisibility();

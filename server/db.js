@@ -1058,6 +1058,43 @@ function customerSchedulePoolsForDate(db, date) {
   return grouped;
 }
 
+function visitedPoolsForDate(db, date) {
+  const selectedDate = isoDateOnly(date);
+  const poolsById = poolLookupMap(db);
+  const grouped = new Map();
+
+  (db.visits || [])
+    .filter((visit) => visit.date === selectedDate)
+    .forEach((visit) => {
+      const pool = poolsById.get(visit.poolId);
+      if (!pool) {
+        return;
+      }
+
+      const existing = grouped.get(visit.poolId) || {
+        ...pool,
+        workflowItems: [],
+        workflowLabel: "",
+        workflowStatus: "",
+        workflowSourceName: "",
+        actualVisitLogged: true,
+        preferredEmployeeId: visit.employeeId,
+        serviceMinutes: Number(pool.serviceMinutes || 40),
+      };
+
+      existing.actualVisitLogged = true;
+      existing.preferredEmployeeId = existing.preferredEmployeeId || visit.employeeId;
+      existing.serviceMinutes = Math.max(
+        Number(existing.serviceMinutes || 0),
+        asMinutes(visit.arrivalAt, visit.departureAt),
+      );
+
+      grouped.set(visit.poolId, existing);
+    });
+
+  return grouped;
+}
+
 function getDuePools(db, date) {
   const weekday = getWeekdayLabel(date);
   const recurring = new Map(
@@ -1083,6 +1120,11 @@ function getDuePools(db, date) {
   customerSchedulePoolsForDate(db, date).forEach((customerPool, poolId) => {
     const existing = recurring.get(poolId);
     recurring.set(poolId, existing ? { ...existing, ...customerPool } : customerPool);
+  });
+
+  visitedPoolsForDate(db, date).forEach((visitedPool, poolId) => {
+    const existing = recurring.get(poolId);
+    recurring.set(poolId, existing ? { ...existing, ...visitedPool } : visitedPool);
   });
 
   return Array.from(recurring.values());
@@ -1227,11 +1269,16 @@ function assignPoolsToEmployees(duePools, employees) {
     });
 
   for (const pool of sortedPools) {
-    let bestAssignment = assignments[0];
+    const eligibleAssignments = pool.preferredEmployeeId
+      ? assignments.filter((assignment) => assignment.employee.id === pool.preferredEmployeeId)
+      : assignments;
+    const candidates = eligibleAssignments.length ? eligibleAssignments : assignments;
+
+    let bestAssignment = candidates[0];
     let bestOption = null;
     let bestDelta = Number.POSITIVE_INFINITY;
 
-    for (const assignment of assignments) {
+    for (const assignment of candidates) {
       const option = simulatePoolInsertion(assignment, pool);
       const delta = option.score - assignment.objectiveScore;
       const mpgCredit = Number(assignment.employee.vehicle?.mpg || 0) * -0.18;
@@ -1360,7 +1407,10 @@ async function buildRoutePlansForDate(db, date) {
 async function ensureRoutePlansForDate(db, date) {
   const selectedDate = isoDateOnly(date);
   const existing = db.routePlans.filter((plan) => plan.date === selectedDate);
-  if (existing.length) {
+  const duePools = getDuePools(db, selectedDate);
+  const existingHasWork = existing.some((plan) => Number(plan.totalPools || 0) > 0);
+
+  if (existing.length && (existingHasWork || !duePools.length)) {
     return { changed: false, routePlans: existing };
   }
 
@@ -2319,6 +2369,27 @@ function buildOverview(db, date, viewer) {
   };
 }
 
+function findSuggestedServiceDate(db, startDate = new Date().toISOString()) {
+  const base = isoDateOnly(startDate);
+  let bestDate = base;
+  let bestScore = Number.NEGATIVE_INFINITY;
+
+  for (let offset = -3; offset <= 10; offset += 1) {
+    const candidate = dateShift(base, offset);
+    const duePools = getDuePools(db, candidate).length;
+    const visits = (db.visits || []).filter((visit) => visit.date === candidate).length;
+    const expenses = (db.expenses || []).filter((expense) => expense.date === candidate).length;
+    const score = visits * 25 + duePools * 10 + expenses * 5 - Math.abs(offset) * 2;
+
+    if (score > bestScore) {
+      bestScore = score;
+      bestDate = candidate;
+    }
+  }
+
+  return bestScore > 0 ? bestDate : base;
+}
+
 function findUserByEmail(db, email) {
   return db.auth.users.find((user) => user.email.toLowerCase() === String(email || "").trim().toLowerCase()) || null;
 }
@@ -2347,6 +2418,7 @@ module.exports = {
   findUserById,
   getAccessibleEmployees,
   getDuePools,
+  findSuggestedServiceDate,
   getViewerEmployee,
   haversineMiles,
   isoDateOnly,

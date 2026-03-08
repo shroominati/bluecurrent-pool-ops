@@ -11,6 +11,7 @@ const {
   buildRoutePlansForDate,
   ensureDb,
   ensureRoutePlansForDate,
+  findSuggestedServiceDate,
   findUserByEmail,
   findUserById,
   getDuePools,
@@ -277,6 +278,7 @@ app.get("/api/config", async (req, res) => {
     mode: "expanded-mvp",
     dbMode: DATABASE_URL ? "postgres-jsonb" : "json-file",
     dbFile: DB_FILE,
+    suggestedServiceDate: findSuggestedServiceDate(db),
     routingProvider: routing,
     quickbooksMode: qbo.clientId ? "oauth-ready" : "export-ready",
     capabilities: [
