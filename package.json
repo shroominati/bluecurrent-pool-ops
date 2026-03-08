@@ -4,25 +4,13 @@
   "private": true,
   "description": "Pool service operations app with technician routing, field visit logs, and dashboard analytics",
   "scripts": {
-    "create-token": "node scripts/create-token.js",
-    "jackpot": "node scripts/proof-of-burn-jackpot.js",
     "app:start": "node server/index.js",
     "app:dev": "node server/index.js",
-    "app:settle": "node scripts/settle-market.js",
-    "import:maritime": "node scripts/import-maritime-data.js",
-    "wreck:start": "node server/wreck-app.js",
-    "frontend:build": "node scripts/build-frontend.js",
-    "telegram:bot": "node scripts/telegram-codex-bot.js",
-    "onchain:build": "cd onchain && anchor build",
-    "onchain:test": "cd onchain && anchor test"
+    "frontend:build": "node scripts/build-frontend.js"
   },
   "dependencies": {
-    "@metaplex-foundation/mpl-token-metadata": "^3.4.0",
-    "@solana/spl-token": "^0.4.8",
-    "@solana/web3.js": "^1.98.0",
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "nanoid": "^5.1.5",
     "pg": "^8.13.1"
   }
 }

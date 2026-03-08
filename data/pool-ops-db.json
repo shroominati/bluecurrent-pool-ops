@@ -1746,6 +1746,202 @@
         "maxOptimizationWaypoints": 12
       },
       "routeMode": "heuristic-fallback"
+    },
+    {
+      "id": "route-2026-03-08-emp-mia-rivera",
+      "date": "2026-03-08",
+      "employeeId": "emp-mia-rivera",
+      "employeeName": "Mia Rivera",
+      "vehicleUnit": "Truck 12",
+      "vehicleMpg": 13.5,
+      "startPoint": {
+        "lat": 26.7153,
+        "lon": -80.0534,
+        "label": "West Palm dispatch"
+      },
+      "stops": [],
+      "path": [
+        {
+          "lat": 26.7153,
+          "lon": -80.0534,
+          "label": "West Palm dispatch"
+        },
+        {
+          "lat": 26.7153,
+          "lon": -80.0534,
+          "label": "West Palm dispatch"
+        }
+      ],
+      "totalPools": 0,
+      "totalMiles": 0,
+      "driveMinutes": 0,
+      "serviceMinutes": 0,
+      "workdayMinutes": 0,
+      "fuelGallons": 0,
+      "efficiencyScore": 100,
+      "capacityUse": 0,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": -6.4
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
+    },
+    {
+      "id": "route-2026-03-08-emp-darius-hall",
+      "date": "2026-03-08",
+      "employeeId": "emp-darius-hall",
+      "employeeName": "Darius Hall",
+      "vehicleUnit": "Truck 18",
+      "vehicleMpg": 14.8,
+      "startPoint": {
+        "lat": 26.5898,
+        "lon": -80.1003,
+        "label": "Lake Worth yard"
+      },
+      "stops": [],
+      "path": [
+        {
+          "lat": 26.5898,
+          "lon": -80.1003,
+          "label": "Lake Worth yard"
+        },
+        {
+          "lat": 26.5898,
+          "lon": -80.1003,
+          "label": "Lake Worth yard"
+        }
+      ],
+      "totalPools": 0,
+      "totalMiles": 0,
+      "driveMinutes": 0,
+      "serviceMinutes": 0,
+      "workdayMinutes": 0,
+      "fuelGallons": 0,
+      "efficiencyScore": 100,
+      "capacityUse": 0,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": -6.4
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
+    },
+    {
+      "id": "route-2026-03-08-emp-serena-cho",
+      "date": "2026-03-08",
+      "employeeId": "emp-serena-cho",
+      "employeeName": "Serena Cho",
+      "vehicleUnit": "Van 04",
+      "vehicleMpg": 16.2,
+      "startPoint": {
+        "lat": 26.4615,
+        "lon": -80.0728,
+        "label": "Delray staging"
+      },
+      "stops": [],
+      "path": [
+        {
+          "lat": 26.4615,
+          "lon": -80.0728,
+          "label": "Delray staging"
+        },
+        {
+          "lat": 26.4615,
+          "lon": -80.0728,
+          "label": "Delray staging"
+        }
+      ],
+      "totalPools": 0,
+      "totalMiles": 0,
+      "driveMinutes": 0,
+      "serviceMinutes": 0,
+      "workdayMinutes": 0,
+      "fuelGallons": 0,
+      "efficiencyScore": 100,
+      "capacityUse": 0,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": -6.4
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
+    },
+    {
+      "id": "route-2026-03-08-emp-owen-price",
+      "date": "2026-03-08",
+      "employeeId": "emp-owen-price",
+      "employeeName": "Owen Price",
+      "vehicleUnit": "Truck 21",
+      "vehicleMpg": 15.1,
+      "startPoint": {
+        "lat": 26.3696,
+        "lon": -80.1289,
+        "label": "Boca service pod"
+      },
+      "stops": [],
+      "path": [
+        {
+          "lat": 26.3696,
+          "lon": -80.1289,
+          "label": "Boca service pod"
+        },
+        {
+          "lat": 26.3696,
+          "lon": -80.1289,
+          "label": "Boca service pod"
+        }
+      ],
+      "totalPools": 0,
+      "totalMiles": 0,
+      "driveMinutes": 0,
+      "serviceMinutes": 0,
+      "workdayMinutes": 0,
+      "fuelGallons": 0,
+      "efficiencyScore": 100,
+      "capacityUse": 0,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": -6.4
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
     }
   ],
   "liveTracking": {
@@ -2215,7 +2411,7 @@
       "provider": "mapbox",
       "profile": "mapbox/driving-traffic",
       "configured": false,
-      "lastPlannedAt": "2026-03-07T23:51:01.867Z"
+      "lastPlannedAt": "2026-03-08T00:38:14.681Z"
     },
     "quickbooks": {
       "environment": "sandbox",
