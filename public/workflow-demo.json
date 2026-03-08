@@ -1,0 +1,34 @@
+[
+  {
+    "external_id": "wf-demo-1001",
+    "customer_name": "Marina Cove Estates",
+    "address": "212 Harbor Watch Ln, Delray Beach, FL",
+    "lat": 26.4475,
+    "lon": -80.0618,
+    "neighborhood": "Delray Beach",
+    "gallons": 19000,
+    "service_minutes": 58,
+    "service_date": "2026-03-07",
+    "priority": "high",
+    "status": "queued",
+    "notes": "Workflow import demo: add phosphate treatment and photo set.",
+    "workflow_label": "Recovery clean",
+    "pool_external_id": "ext-pool-212"
+  },
+  {
+    "external_id": "wf-demo-1002",
+    "customer_name": "Palm Vista HOA",
+    "address": "988 Waterside Ave, West Palm Beach, FL",
+    "lat": 26.7261,
+    "lon": -80.0674,
+    "neighborhood": "West Palm",
+    "gallons": 26000,
+    "service_minutes": 52,
+    "service_date": "2026-03-07",
+    "priority": "medium",
+    "status": "queued",
+    "notes": "Workflow import demo: verify booster pump noise report.",
+    "workflow_label": "Standard service",
+    "pool_external_id": "ext-pool-988"
+  }
+]

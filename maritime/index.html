@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Florida Wreck Signal</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-left"></div>
+    <div class="bg-orb orb-right"></div>
+    <div class="grid-shell"></div>
+
+    <main class="app-shell">
+      <header class="hero">
+        <section class="hero-copy">
+          <p class="eyebrow">Florida East Coast Maritime Research</p>
+          <h1>Florida Wreck Signal</h1>
+          <p class="lead">
+            Florida Keys to Daytona wreck research with official-source imports, live NOAA
+            marine conditions, browser geolocation tracking, and separate offshore and
+            shoreline prediction corridors.
+          </p>
+        </section>
+        <aside class="hero-panel">
+          <p id="configText" class="mini-label">Loading configuration...</p>
+          <p id="warningText" class="meta-copy"></p>
+          <div class="pill-row">
+            <span class="pill" id="summarySources">Sources: --</span>
+            <span class="pill" id="summaryJournals">Journals: --</span>
+            <span class="pill" id="summaryWrecks">Known wrecks: --</span>
+          </div>
+        </aside>
+      </header>
+
+      <nav class="view-tabs" id="viewTabs" aria-label="App views">
+        <button class="view-tab is-active" data-view="predict" type="button">Predicted Targets</button>
+        <button class="view-tab" data-view="references" type="button">Reference Map</button>
+        <button class="view-tab" data-view="overview" type="button">Overview</button>
+        <button class="view-tab" data-view="wrecks" type="button">Known Wrecks</button>
+      </nav>
+
+      <section id="predictView" class="view-panel">
+        <section class="panel">
+          <div class="section-top">
+            <div>
+              <p class="mini-label">Predict</p>
+              <h2>Predicted Land + Ocean Corridors</h2>
+            </div>
+            <p class="section-copy">Separate shoreline and offshore predictions spanning the Keys through Daytona. Use these for lawful observation, archival follow-up, and non-invasive planning.</p>
+          </div>
+          <div class="predict-surface-tabs" id="predictSurfaceTabs" aria-label="Prediction surfaces">
+            <button class="view-tab is-active" data-predict-surface="land" type="button">Land</button>
+            <button class="view-tab" data-predict-surface="ocean" type="button">Ocean</button>
+          </div>
+          <div class="predict-grid">
+            <article class="tracker-card">
+              <div class="list-top">
+                <div>
+                  <p class="mini-label" id="predictEyebrow">Shoreline Map</p>
+                  <h3 id="predictTitle">Loading land corridor...</h3>
+                </div>
+                <span id="predictScore" class="tag">--</span>
+              </div>
+              <div id="predictMap" class="live-map predict-map" role="img" aria-label="Predicted corridor map"></div>
+            </article>
+            <article class="tracker-card">
+              <div class="list-top">
+                <div>
+                  <p class="mini-label" id="predictFocusEyebrow">Land Focus</p>
+                  <h3 id="predictFocusTitle">Where To Walk First</h3>
+                </div>
+              </div>
+              <div id="predictSummary" class="stack-list"></div>
+            </article>
+          </div>
+          <div id="predictList" class="route-board"></div>
+        </section>
+      </section>
+
+      <section id="referencesView" class="view-panel hidden">
+        <section class="panel">
+          <div class="section-top">
+            <div>
+              <p class="mini-label">Evidence Map</p>
+              <h2>Uploaded Reference Points</h2>
+            </div>
+            <p class="section-copy">Plots individual wrecks, journal-derived reference points, and source-linked centroids from the uploaded dataset.</p>
+          </div>
+          <div class="predict-surface-tabs" id="referenceFilters" aria-label="Reference filters">
+            <button class="view-tab is-active" data-reference-filter="all" type="button">All</button>
+            <button class="view-tab" data-reference-filter="wreck" type="button">Wrecks</button>
+            <button class="view-tab" data-reference-filter="journal" type="button">Journals</button>
+            <button class="view-tab" data-reference-filter="source" type="button">Sources</button>
+          </div>
+          <div class="predict-grid">
+            <article class="tracker-card">
+              <div class="list-top">
+                <div>
+                  <p class="mini-label">Reference Map</p>
+                  <h3>All Uploaded Evidence</h3>
+                </div>
+              </div>
+              <div id="referenceMap" class="live-map predict-map" role="img" aria-label="Reference evidence map"></div>
+            </article>
+            <article class="tracker-card">
+              <div class="list-top">
+                <div>
+                  <p class="mini-label">Reference Stats</p>
+                  <h3>Mapped Records</h3>
+                </div>
+              </div>
+              <div id="referenceStats" class="stack-list"></div>
+            </article>
+          </div>
+          <div id="referenceList" class="route-board"></div>
+        </section>
+      </section>
+
+      <div id="overviewView" class="view-panel hidden">
+        <section class="panel">
+          <div class="section-top">
+            <div>
+              <p class="mini-label">Live Coverage</p>
+              <h2>Keys to Daytona</h2>
+            </div>
+            <p class="section-copy">NOAA tide, wave, wind, and buoy snapshots for the current coverage regions across the Florida east-coast model.</p>
+          </div>
+          <div id="regionCards" class="region-grid"></div>
+        </section>
+
+        <section class="dashboard-grid">
+          <section class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Field Tracker</p>
+                <h2>Live Geolocation Tracker</h2>
+              </div>
+              <div class="button-row">
+                <button id="startTrackingBtn" class="btn btn-primary">Start Tracking</button>
+                <button id="stopTrackingBtn" class="btn btn-ghost">Stop</button>
+              </div>
+            </div>
+            <div id="trackerSummary" class="muted-card">
+              Select a Treasure Coast or Space Coast zone and start tracking to follow your live
+              path toward its coarse coordinates.
+            </div>
+            <div class="tracker-grid">
+              <div class="tracker-card">
+                <h3>Path</h3>
+                <div id="trackerMap" class="live-map tracker-map" role="img" aria-label="Tracking path"></div>
+              </div>
+              <div class="tracker-card">
+                <h3>Live Conditions</h3>
+                <div id="trackerConditions" class="stack-list"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Journal Bot</p>
+                <h2>Analyze a Source</h2>
+              </div>
+              <p class="section-copy">Paste a clipping, log entry, or OCR paragraph and score the likely corridors.</p>
+            </div>
+            <form id="analyzeForm" class="form-grid">
+              <label class="field">
+                Working title
+                <input name="title" placeholder="1715 fleet note" />
+              </label>
+              <label class="field">
+                Year
+                <input name="year" type="number" min="1500" max="2099" placeholder="1715" />
+              </label>
+              <label class="field">
+                Region hint
+                <input name="regionHint" placeholder="Sebastian, Treasure Coast" />
+              </label>
+              <label class="field field-wide">
+                Journal text
+                <textarea
+                  name="text"
+                  rows="6"
+                  placeholder="Example: Silver-laden ships were driven toward the reefs off Sebastian after the hurricane..."
+                  required
+                ></textarea>
+              </label>
+              <button type="submit" class="btn btn-secondary">Analyze Text</button>
+            </form>
+            <div id="analysisResult" class="muted-card">
+              Run an analysis to see extracted signals and top candidate zones.
+            </div>
+          </section>
+        </section>
+
+        <section class="portal-grid">
+          <section class="panel wide-panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Candidate Zones</p>
+                <h2>Coarse Search Corridors</h2>
+              </div>
+              <p class="section-copy">Track any corridor to open route guidance and live NOAA conditions.</p>
+            </div>
+            <div id="zoneList" class="route-board"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Manual Notes</p>
+                <h2>Save Observation</h2>
+              </div>
+              <p class="section-copy">Store your own archival note and refresh ranking inputs.</p>
+            </div>
+            <form id="observationForm" class="form-grid">
+              <label class="field">
+                Title
+                <input name="title" required placeholder="Fort Pierce salvage note" />
+              </label>
+              <label class="field">
+                Source label
+                <input name="sourceLabel" required placeholder="LOC clipping" />
+              </label>
+              <label class="field">
+                Year
+                <input name="year" type="number" min="1500" max="2099" placeholder="1837" />
+              </label>
+              <label class="field field-wide">
+                Area tags
+                <input name="areaTags" placeholder="treasure-coast, fort-pierce" />
+              </label>
+              <label class="field field-wide">
+                Excerpt
+                <textarea
+                  name="excerpt"
+                  rows="5"
+                  required
+                  placeholder="Paste a verified or working excerpt from your notes."
+                ></textarea>
+              </label>
+              <button type="submit" class="btn btn-primary">Save Observation</button>
+            </form>
+          </section>
+        </section>
+
+        <section class="dashboard-grid">
+          <section class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Import State</p>
+                <h2>Official Source Pulls</h2>
+              </div>
+              <p class="section-copy">Status from NOAA ENC Direct, NHC HURDAT2, and LOC search imports.</p>
+            </div>
+            <div id="importStatus" class="recommendation-list"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Model Notes</p>
+                <h2>Scoring Inputs</h2>
+              </div>
+            </div>
+            <div id="modelNotes" class="recommendation-list"></div>
+          </section>
+        </section>
+
+        <section class="portal-grid">
+          <section class="panel wide-panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Journal Signals</p>
+                <h2>Imported + Manual Evidence</h2>
+              </div>
+            </div>
+            <div id="journalList" class="stack-list"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Recent Analyses</p>
+                <h2>Bot Runs</h2>
+              </div>
+            </div>
+            <div id="savedAnalysisList" class="stack-list"></div>
+          </section>
+        </section>
+
+        <section class="panel">
+          <div class="section-top">
+            <div>
+              <p class="mini-label">Storm Corridors</p>
+              <h2>Weather History</h2>
+            </div>
+          </div>
+          <div id="stormList" class="stack-list"></div>
+        </section>
+      </div>
+
+      <div id="wrecksView" class="view-panel hidden">
+        <section class="panel">
+          <div class="section-top">
+            <div>
+              <p class="mini-label">Known Wreck Anchors</p>
+              <h2>Anchor Wreck Reference</h2>
+            </div>
+            <p class="section-copy">Charted and documented wrecks used as anchor references for the predicted unknown target corridors.</p>
+          </div>
+          <div id="wreckAnchorTargets" class="route-board"></div>
+        </section>
+
+        <section class="panel">
+          <div class="section-top">
+            <div>
+              <p class="mini-label">Known Wreck Catalog</p>
+              <h2>Existing Wreck Records</h2>
+            </div>
+          </div>
+          <div id="wreckList" class="stack-list"></div>
+        </section>
+      </div>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

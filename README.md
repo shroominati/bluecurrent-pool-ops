@@ -1,382 +1,107 @@
-# Bill and Danney Solana Token
+# BlueCurrent Pool Ops
 
-This creates a Solana SPL token with:
-- Name: `Bill and Danney`
-- Symbol: `BND`
-- Supply: `69,000,000,000`
-- Decimals: `8` (default)
+Node/Express app for pool service companies that need dispatch planning, technician route tracking, field service logging, payroll visibility, and accounting integration in one product.
 
-## 1) Install dependencies
+This version includes:
+- role-based login for owners, dispatchers, and technicians
+- route optimization with live road-network routing when Mapbox is configured
+- technician portal for visit logging, chemistry, notes, photos, and GPS capture
+- employee profiles with avatars, certifications, emergency contacts, and payroll summaries
+- pay hub with projected day gross, pay stubs, and next pay dates
+- QuickBooks OAuth connection status plus expense export feed
+- installable PWA shell with offline-cached UI assets
 
-```bash
-npm install
-```
-
-## 2) Run token creation
-
-By default this runs on devnet and uses `~/.config/solana/id.json` as the payer keypair.
-
-```bash
-npm run create-token
-```
-
-If you do not have a keypair yet, create one:
-
-```bash
-node -e 'const fs=require("fs");const {Keypair}=require("@solana/web3.js");const kp=Keypair.generate();fs.writeFileSync("devnet-id.json", JSON.stringify(Array.from(kp.secretKey)));console.log("Pubkey:", kp.publicKey.toBase58());'
-```
-
-Then run:
-
-```bash
-KEYPAIR_PATH=/absolute/path/to/devnet-id.json npm run create-token
-```
-
-If devnet faucet requests are rate-limited, fund the wallet manually at [faucet.solana.com](https://faucet.solana.com/) and rerun.
-
-## Optional environment variables
-
-```bash
-RPC_URL=https://api.devnet.solana.com
-KEYPAIR_PATH=/absolute/path/to/id.json
-TOKEN_NAME="Bill and Danney"
-TOKEN_SYMBOL=BND
-TOKEN_URI=https://example.com/bill-and-danney.json
-SUPPLY=69000000000
-DECIMALS=8
-```
-
-Example:
-
-```bash
-RPC_URL=https://api.devnet.solana.com KEYPAIR_PATH=$HOME/.config/solana/id.json npm run create-token
-```
-
-## Mainnet
-
-To create on mainnet, set:
-
-```bash
-RPC_URL=https://api.mainnet-beta.solana.com npm run create-token
-```
-
-Use a funded keypair and double-check settings before mainnet execution.
-
-## Creative Function: Proof-of-Burn Jackpot
-
-This adds a game mechanic to your existing token mint:
-- `enter`: burn tokens to enter a round
-- `draw`: verifiably pick weighted winner + mint jackpot reward
-
-Streak multiplier:
-- each consecutive day entered increases entry weight
-- weight uses basis points: `10000 + bonus`
-- default bonus is `+1000` bps per day (`+10%`) up to `7` bonus days
-
-It works with your current mint (must still have mint authority for `draw`).
-
-### Enter a round
-
-```bash
-MINT_ADDRESS=76oyjeJhvauL1zGXQAP8vP4D3q45GLgWaPqzfxVccjFX \
-KEYPAIR_PATH=/Users/alfredmunoz/Documents/Playground/my-keypair.json \
-ROUND_ID=2026-03-01 \
-ENTRY_AMOUNT=1000 \
-STREAK_BONUS_BPS=1000 \
-STREAK_MAX_BONUS_DAYS=7 \
-npm run jackpot -- enter
-```
-
-### Draw winner for that round
-
-```bash
-MINT_ADDRESS=76oyjeJhvauL1zGXQAP8vP4D3q45GLgWaPqzfxVccjFX \
-KEYPAIR_PATH=/Users/alfredmunoz/Documents/Playground/my-keypair.json \
-ROUND_ID=2026-03-01 \
-JACKPOT_AMOUNT=1000000 \
-npm run jackpot -- draw
-```
-
-Round files and draw proof are saved in:
-
-```bash
-./jackpot-rounds/
-```
-
-## Reveal Market App (Polymarket-style MVP on Solana)
-
-This repo now includes a local web app where users:
-- hear teaser audio first
-- bet HOT vs NOT using SOL transfer to escrow
-- see reveal video only after reveal time
-- resolve outcome and compute claim payouts
-
-### Start app
+## Run locally
 
 ```bash
 npm install
-PORT=8787 \
-RPC_URL=https://api.devnet.solana.com \
-ESCROW_WALLET=4Wu7JUY14o7K7VUZLZKeAqZNmvnHUTSDDW7P4EpCbyDD \
-ADMIN_KEY=your-admin-secret \
 npm run app:start
 ```
 
-Open:
+Open [http://localhost:8787](http://localhost:8787).
+
+If `8787` is already in use, run:
 
 ```bash
-http://localhost:8787
+PORT=8791 npm run app:start
 ```
 
-### How betting works
+## Demo accounts
 
-1. User connects Phantom.
-2. App sends SOL transfer from user wallet to escrow wallet.
-3. Server verifies that transfer on-chain via transaction signature.
-4. Bet is recorded only if signature is valid and unused.
+- Owner: `owner@bluecurrent.local` / `owner123!`
+- Dispatcher: `dispatch@bluecurrent.local` / `dispatch123!`
+- Technician: `mia@bluecurrent.local` / `tech123!`
 
-### Commit-reveal flow
-
-1. On create:
-   - UI computes `sha256(revealVideoUrl|revealSecret)`
-   - server stores only the commitment hash
-2. On reveal:
-   - admin submits `revealVideoUrl + revealSecret`
-   - server verifies commitment hash and unlocks video
-
-### Resolve and claims
-
-1. Admin resolves market as `HOT` or `NOT`.
-2. Winners get proportional payout claims from total pool.
-3. Claims are written to `data/markets-db.json`.
-
-### Execute payouts from escrow
-
-Use escrow private key to pay pending claims:
+## Frontend build
 
 ```bash
-MARKET_ID=<market-id> \
-RPC_URL=https://api.devnet.solana.com \
-ESCROW_KEYPAIR_PATH=/absolute/path/to/escrow-id.json \
-npm run app:settle
+npm run frontend:build
 ```
 
-Dry run:
+Static files are written to `dist/`.
+
+## Environment
+
+The app runs without external integrations, but the following env vars unlock the live features:
 
 ```bash
-MARKET_ID=<market-id> DRY_RUN=true npm run app:settle
+PORT=8787
+
+# Optional: managed Postgres. If not set, JSON file mode is used.
+# DATABASE_URL=postgres://user:pass@host:5432/db
+
+# Optional: force a specific datastore file
+# DB_FILE=/absolute/path/pool-ops-db.json
+
+# Optional: real road-network routing
+# ROUTING_PROVIDER=mapbox
+# MAPBOX_ACCESS_TOKEN=pk.your_mapbox_token
+# MAPBOX_PROFILE=mapbox/driving-traffic
+
+# Optional: QuickBooks OAuth
+# QBO_CLIENT_ID=your_client_id
+# QBO_CLIENT_SECRET=your_client_secret
+# QBO_REDIRECT_URI=http://localhost:8787/api/integrations/quickbooks/callback
+# QBO_ENVIRONMENT=sandbox
+
+# Optional for frontend static deploy
+# POOL_OPS_API_BASE=https://your-api.example.com
 ```
 
-### Files
+## API
 
-- API server: `server/index.js`
-- DB helpers: `server/db.js`
-- UI: `public/index.html`, `public/app.js`, `public/styles.css`
-- Settlement script: `scripts/settle-market.js`
+### Public
 
-### Safety notes
+- `GET /api/config`
+- `POST /api/auth/login`
+- `GET /api/integrations/quickbooks/callback`
 
-- This is an MVP, not production custody infra.
-- Add content moderation, legal compliance, KYC/geo controls, and consent verification before public launch.
+### Authenticated
 
-## Added: Creator Verification + Moderation
+- `GET /api/auth/me`
+- `POST /api/auth/logout`
+- `GET /api/overview?date=YYYY-MM-DD`
+- `GET /api/payroll?date=YYYY-MM-DD`
+- `POST /api/visits`
+- `POST /api/expenses`
+- `GET /api/quickbooks/export?date=YYYY-MM-DD`
 
-The app now includes:
-- creator verification submissions
-- admin approval/rejection flow
-- optional publish gate (`REQUIRE_VERIFIED_CREATOR=true`)
-- user reports on markets
-- admin report triage (resolved/dismissed/open + optional hide market)
+### Manager-only
 
-Key endpoints:
-- `POST /api/creator-verifications`
-- `GET /api/creator-verifications/:wallet`
-- `GET /api/admin/creator-verifications` (admin key)
-- `POST /api/admin/creator-verifications/:wallet` (admin key)
-- `POST /api/markets/:marketId/reports`
-- `GET /api/admin/reports` (admin key)
-- `POST /api/admin/reports/:reportId` (admin key)
+- `POST /api/route-plans/generate`
+- `POST /api/integrations/quickbooks/connect-url`
+- `POST /api/integrations/quickbooks/disconnect`
 
-## Added: Managed Postgres Option
+## Product notes
 
-By default app uses `data/markets-db.json`.
+- Route assignment is still heuristic at the fleet level, then optionally upgraded with live Mapbox road-network timing and geometry per technician route.
+- QuickBooks OAuth is live-ready when credentials are supplied, but this version still treats expenses as export/feed records rather than posting accounting transactions automatically.
+- Photos are stored as browser-captured image data in the prototype so the app works without a separate object store.
+- The service worker caches the core shell for install/offline startup, but API data still requires connectivity.
 
-To use managed Postgres, set:
+## Suggested next steps
 
-```bash
-DATABASE_URL=postgres://...
-```
-
-Storage mode appears in `/api/config` as:
-- `json-file`
-- `postgres-jsonb`
-
-## Added: On-Chain Anchor Program (Phase 2)
-
-Folder:
-
-```bash
-onchain/
-```
-
-## Telegram Spicy V2 Operator Bridge
-
-This repo includes a small polling bot at `scripts/telegram-codex-bot.js` so you
-can send `/spicy` commands from Telegram into a local Codex operator bridge.
-The bridge stays sandboxed, limits projects to an allowlist, keeps one active
-run at a time, and writes audit logs to `~/.spicywhite/logs/telegram-codex-bot.log`.
-
-### Setup
-
-1. Create a Telegram bot with `@BotFather`.
-2. Add these values to `.env`:
-
-```bash
-TELEGRAM_BOT_TOKEN=...
-TELEGRAM_ALLOWED_CHAT_ID=1603197641
-TELEGRAM_ALLOWED_USER_ID=1603197641
-TELEGRAM_WORKDIR=/Users/alfredmunoz/clawbot
-SPICY_DEFAULT_PROJECT=clawbot
-TELEGRAM_ENABLE_SHELL=false
-TELEGRAM_BOT_LOG_PATH=~/.spicywhite/logs/telegram-codex-bot.log
-CODEX_DEFAULT_MODE=safe
-CODEX_SAFE_SANDBOX=workspace-write
-CODEX_FAST_SANDBOX=workspace-write
-```
-
-Get your chat ID by sending the bot a message once, then opening:
-
-```bash
-https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates
-```
-
-### Run
-
-```bash
-npm run telegram:bot
-```
-
-### Allowed projects
-
-- `clawbot` -> `/Users/alfredmunoz/clawbot`
-- `dual-caption` -> `/Users/alfredmunoz/Projects/dual-caption`
-- `saas_test` -> `/Users/alfredmunoz/Projects/saas_test`
-- `milestone_test` -> `/Users/alfredmunoz/Projects/milestone-test`
-
-### Telegram commands
-
-- `/spicy <prompt>` runs Codex on the active project.
-- `/spicy run <prompt>` is the explicit run form.
-- `/spicy status` shows running or idle state.
-- `/spicy stop` stops the active spawned Codex process.
-- `/spicy help` shows the operator command sheet.
-- `/spicy project <name>` switches to an allowlisted project.
-- `/spicy mode <safe|fast>` changes execution mode.
-- `/spicy logs` tails the bridge log.
-- `/spicy diff` shows changed files from the last run.
-- `/spicy doctor` shows project, mode, runtime state, web health, last error, and last snapshot.
-- `/spicy shell <command>` is optional and allowlist-only.
-- plain text messages are treated as `/spicy <prompt>`.
-
-### Shell allowlist
-
-When `TELEGRAM_ENABLE_SHELL=true`, `/spicy shell` is restricted to:
-
-- `pwd`
-- `ls`
-- `git status`
-- `./spicywhite_ctl.sh status`
-- `./spicywhite_ctl.sh doctor`
-- `tail [-n N] bot|web|telegram|errors`
-
-Arbitrary shell is not supported.
-
-### Logging
-
-Every Telegram bridge action is appended to:
-
-```bash
-~/.spicywhite/logs/telegram-codex-bot.log
-```
-
-Each entry includes start, stop, finish, or error events plus cwd, prompt
-summary, exit code, and files changed.
-
-### Security
-
-This is still a remote operator surface. Restrict it to your own Telegram
-chat/user IDs, keep the bot token secret, keep shell disabled unless necessary,
-and leave both safe and fast mode on `workspace-write`.
-
-Program supports:
-- `init_market`
-- `place_bet`
-- `lock_market`
-- `reveal`
-- `resolve`
-- `claim`
-
-Vault model:
-- bets are transferred into the market PDA account
-- winner claims are paid from that PDA via `invoke_signed`
-
-### Build/Test on-chain program
-
-Prereqs:
-- Rust + Solana toolchain
-- Anchor CLI
-
-Commands:
-
-```bash
-cd onchain
-npm install
-anchor build
-anchor test
-```
-
-Or from repo root:
-
-```bash
-npm run onchain:build
-npm run onchain:test
-```
-
-## Deployment (Vercel + Render + Managed DB)
-
-Files added:
-- `render.yaml` (API + managed Postgres blueprint)
-- `vercel.json` (frontend static deploy)
-- `scripts/build-frontend.js` (injects runtime API origin)
-- `public/runtime-config.js` (API base fallback)
-
-### Deploy backend (Render)
-
-1. Create Render blueprint from `render.yaml`.
-2. Set `ESCROW_WALLET` to your custody wallet.
-3. Use generated `ADMIN_KEY`.
-4. Keep `DATABASE_URL` from Render managed Postgres.
-
-### Deploy frontend (Vercel)
-
-Set env var in Vercel project:
-
-```bash
-REVEAL_API_BASE=https://your-render-service.onrender.com
-```
-
-Vercel build command (already in `vercel.json`):
-
-```bash
-npm install && npm run frontend:build
-```
-
-This writes `dist/runtime-config.js` with your API origin.
-
-## Quick Local Run (All Features)
-
-```bash
-npm install
-cp .env.example .env
-npm run app:start
-```
+1. Add customer-facing service reports and homeowner portals.
+2. Push expenses into QuickBooks as mapped purchase or journal records once account/vendor mappings are defined.
+3. Add persistent object storage for visit photos and signed upload flows.
+4. Add turn-by-turn navigation deep links and live technician breadcrumb streaming.

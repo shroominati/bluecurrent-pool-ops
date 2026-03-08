@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a2026" />
+    <title>BlueCurrent Pool Ops</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icon-192.svg" type="image/svg+xml" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-left"></div>
+    <div class="bg-orb orb-right"></div>
+    <div class="grid-shell"></div>
+
+    <main class="app-shell">
+      <section id="loginScreen" class="login-screen">
+        <article class="login-panel">
+          <p class="eyebrow">Pool service command center</p>
+          <h1>BlueCurrent Pool Ops</h1>
+          <p class="lead">
+            Sign in as an owner, dispatcher, technician, or customer to access routes, field logs,
+            service updates, and request tracking.
+          </p>
+
+          <form id="loginForm" class="form-grid">
+            <label class="field">
+              Email
+              <input name="email" type="email" autocomplete="username" required />
+            </label>
+            <label class="field">
+              Password
+              <input name="password" type="password" autocomplete="current-password" required />
+            </label>
+            <button class="btn btn-primary" type="submit">Sign In</button>
+          </form>
+
+          <div class="demo-box">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Demo access</p>
+                <h2>Quick-fill accounts</h2>
+              </div>
+            </div>
+            <div id="demoAccounts" class="demo-grid"></div>
+          </div>
+        </article>
+      </section>
+
+      <section id="appScreen" class="hidden">
+        <header class="topbar panel">
+          <div class="topbar-left">
+            <div class="brand-lockup">
+              <p class="eyebrow">Route intelligence for pool service companies</p>
+              <h1 class="compact-title">BlueCurrent Pool Ops</h1>
+            </div>
+            <div class="viewer-chip">
+              <img id="viewerAvatar" class="viewer-avatar" alt="Viewer avatar" />
+              <div>
+                <strong id="viewerName">Viewer</strong>
+                <p id="viewerMeta" class="meta-copy"></p>
+              </div>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <button id="installBtn" class="btn btn-secondary hidden" type="button">Install App</button>
+            <button id="logoutBtn" class="btn btn-ghost" type="button">Log Out</button>
+          </div>
+        </header>
+
+        <section class="dashboard-grid internal-only">
+          <article class="panel ops-map-panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Fleet command</p>
+                <h2>Live employee map</h2>
+              </div>
+              <p class="section-copy">
+                Main map stays fleet-wide and tracks every active employee in real time.
+              </p>
+            </div>
+            <div id="opsMap" class="ops-map-shell"></div>
+          </article>
+        </section>
+
+        <section class="hero-grid internal-only">
+          <article class="panel hero-panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Operations</p>
+                <h2 id="companyName">Loading...</h2>
+              </div>
+              <div class="pill-row">
+                <span class="pill" id="configMode">MVP</span>
+                <span class="pill" id="configDb">DB</span>
+              </div>
+            </div>
+
+            <div class="control-strip">
+              <label class="field">
+                Service date
+                <input id="serviceDate" type="date" />
+              </label>
+              <button id="generateRoutesBtn" class="btn btn-primary manager-only" type="button">
+                Rebuild Routes
+              </button>
+            </div>
+
+            <p id="companyMeta" class="meta-copy"></p>
+            <div class="pill-row">
+              <span class="pill" id="routingStatus">Routing</span>
+              <span class="pill" id="quickbooksStatus">QuickBooks</span>
+              <span class="pill" id="pwaStatus">PWA</span>
+            </div>
+            <div id="recommendations" class="recommendation-list"></div>
+          </article>
+
+          <article class="panel integration-panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Integrations</p>
+                <h2>QuickBooks + Routing + Workflow</h2>
+              </div>
+            </div>
+            <p id="integrationCopy" class="meta-copy"></p>
+            <div class="action-stack">
+              <button id="quickbooksConnectBtn" class="btn btn-secondary manager-only" type="button">
+                Connect QuickBooks
+              </button>
+              <button id="quickbooksDisconnectBtn" class="btn btn-ghost manager-only" type="button">
+                Disconnect QuickBooks
+              </button>
+            </div>
+            <form id="workflowSourceForm" class="form-grid manager-only">
+              <div class="split-grid">
+                <label class="field">
+                  Workflow source
+                  <input id="workflowSourceName" name="sourceName" placeholder="ServiceTitan bridge" />
+                </label>
+                <label class="field">
+                  Source type
+                  <select id="workflowSourceType" name="sourceType">
+                    <option value="json-url">JSON feed</option>
+                    <option value="postgres">Postgres</option>
+                  </select>
+                </label>
+              </div>
+              <label class="field">
+                Feed URL
+                <input id="workflowFeedUrl" name="feedUrl" placeholder="https://ops.example.com/work-orders.json" />
+              </label>
+              <label class="field">
+                Database connection string
+                <input
+                  id="workflowConnectionString"
+                  name="connectionString"
+                  placeholder="postgres://user:pass@host:5432/dbname"
+                />
+              </label>
+              <label class="field">
+                SQL query
+                <textarea
+                  id="workflowSqlQuery"
+                  name="sqlQuery"
+                  rows="6"
+                  placeholder="SELECT work_order_id AS external_id, customer_name, address, latitude AS lat, longitude AS lon, service_minutes, service_date, priority, status, notes FROM work_orders WHERE service_date >= CURRENT_DATE;"
+                ></textarea>
+              </label>
+              <div class="action-stack">
+                <button id="workflowSaveBtn" class="btn btn-secondary" type="submit">Save Workflow Source</button>
+                <button id="workflowSyncBtn" class="btn btn-primary" type="button">Sync Workflow</button>
+              </div>
+            </form>
+            <p id="workflowSyncSummary" class="meta-copy"></p>
+            <div id="integrationNotes" class="stack-list"></div>
+          </article>
+        </section>
+
+        <section class="kpi-grid internal-only" id="kpiGrid"></section>
+
+        <section class="panel workspace-nav-panel">
+          <div class="section-top">
+            <div>
+              <p class="mini-label">Workspaces</p>
+              <h2>Organized command view</h2>
+            </div>
+            <p class="section-copy">
+              Keep the fleet map fixed at the top, then switch between dispatch, team, sales, field, and admin views.
+            </p>
+          </div>
+          <div id="workspaceTabs" class="workspace-tabs"></div>
+        </section>
+
+        <div class="workspace-panel-stack" data-workspace-panel="dispatch">
+        <section class="dashboard-grid">
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Job economics</p>
+                <h2>Real-time cost engine</h2>
+              </div>
+            </div>
+            <p id="economicsSummary" class="meta-copy"></p>
+            <div id="economicsBoard" class="stack-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Expense mix</p>
+                <h2>Pool business spend</h2>
+              </div>
+            </div>
+            <div id="expenseMixBoard" class="stack-list"></div>
+          </article>
+        </section>
+
+        <section class="map-grid">
+          <article class="panel ops-map-panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Focused route</p>
+                <h2>Employee route map</h2>
+              </div>
+              <p class="section-copy">
+                Click an employee card, spotlight card, or route card to isolate only that technician here.
+              </p>
+            </div>
+            <div id="focusedMap" class="ops-map-shell"></div>
+          </article>
+
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Fleet spotlight</p>
+                <h2>Employee hub</h2>
+              </div>
+            </div>
+            <div id="fleetSpotlight" class="stack-list"></div>
+            <div class="section-top route-rail-head">
+              <div>
+                <p class="mini-label">Focused route</p>
+                <h2>Route rail</h2>
+              </div>
+            </div>
+            <div id="focusedRouteRail" class="stack-list"></div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel wide-panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Dispatcher view</p>
+                <h2>Route board</h2>
+              </div>
+            </div>
+            <div id="routeBoard" class="route-board"></div>
+          </article>
+
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Service feed</p>
+                <h2>Recent visits</h2>
+              </div>
+            </div>
+            <div id="visitFeed" class="stack-list"></div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Workflow queue</p>
+                <h2>Imported jobs</h2>
+              </div>
+            </div>
+            <p id="workflowSummary" class="meta-copy"></p>
+            <div id="workflowBoard" class="stack-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Pool risk</p>
+                <h2>Attention list</h2>
+              </div>
+            </div>
+            <div id="poolBoard" class="stack-list"></div>
+          </article>
+        </section>
+        </div>
+
+        <div class="workspace-panel-stack hidden" data-workspace-panel="team">
+        <section class="dashboard-grid">
+          <article class="panel wide-panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Employee center</p>
+                <h2>Team hub</h2>
+              </div>
+            </div>
+            <div id="employeeBoard" class="employee-selector-grid"></div>
+            <div id="employeeTabs" class="tab-row"></div>
+            <div id="employeePanel" class="employee-panel"></div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Pay hub</p>
+                <h2>Payroll snapshot</h2>
+              </div>
+            </div>
+            <div id="payrollBoard" class="stack-list"></div>
+          </article>
+        </section>
+        </div>
+
+        <div class="workspace-panel-stack hidden" data-workspace-panel="sales">
+        <section class="dashboard-grid">
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Sales pipeline</p>
+                <h2>Upsells + customer growth</h2>
+              </div>
+            </div>
+            <p id="salesSummary" class="meta-copy"></p>
+            <div id="salesBoard" class="stack-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Sales leaderboard</p>
+                <h2>Revenue by employee</h2>
+              </div>
+            </div>
+            <div id="salesLeaderboard" class="stack-list"></div>
+          </article>
+        </section>
+        </div>
+
+        <div class="workspace-panel-stack hidden" data-workspace-panel="customer">
+        <section class="dashboard-grid">
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Customer portal</p>
+                <h2>Service account hub</h2>
+              </div>
+            </div>
+            <div id="customerPortalSummary" class="muted-card"></div>
+            <div id="customerPoolBoard" class="stack-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Requests</p>
+                <h2>Complaints, schedule, referrals</h2>
+              </div>
+            </div>
+            <form id="customerRequestForm" class="form-grid">
+              <div class="split-grid">
+                <label class="field">
+                  Pool account
+                  <select id="customerPoolSelect" name="poolId"></select>
+                </label>
+                <label class="field">
+                  Request type
+                  <select id="customerRequestType" name="type">
+                    <option value="complaint">Complaint</option>
+                    <option value="schedule">Schedule change</option>
+                    <option value="referral">Referral</option>
+                    <option value="photo-update">Photo request</option>
+                    <option value="general">General request</option>
+                  </select>
+                </label>
+              </div>
+              <div class="split-grid">
+                <label class="field">
+                  Title
+                  <input name="title" placeholder="Need extra brushing after storm" required />
+                </label>
+                <label class="field">
+                  Preferred date
+                  <input name="preferredDate" type="date" />
+                </label>
+              </div>
+              <label class="field">
+                Preferred window
+                <select name="preferredWindow">
+                  <option value="">No preference</option>
+                  <option value="morning">Morning</option>
+                  <option value="afternoon">Afternoon</option>
+                  <option value="after-service">After service photos</option>
+                </select>
+              </label>
+              <label class="field">
+                Details
+                <textarea name="message" rows="4" placeholder="Tell the office what happened, what you need scheduled, or what you want us to look at." required></textarea>
+              </label>
+              <div id="customerReferralFields" class="split-grid hidden">
+                <label class="field">
+                  Referral name
+                  <input name="referralName" placeholder="Neighbor name" />
+                </label>
+                <label class="field">
+                  Referral phone
+                  <input name="referralPhone" placeholder="(561) 555-0123" />
+                </label>
+              </div>
+              <label id="customerReferralAddressField" class="field hidden">
+                Referral address
+                <input name="referralAddress" placeholder="123 Palm Court, Jupiter, FL" />
+              </label>
+              <div class="photo-panel">
+                <div class="photo-actions">
+                  <label class="btn btn-secondary photo-picker">
+                    Upload photos
+                    <input id="customerPhotoInput" type="file" accept="image/*" multiple />
+                  </label>
+                </div>
+                <div id="customerPhotoPreview" class="photo-preview"></div>
+              </div>
+              <button class="btn btn-primary" type="submit">Send Request</button>
+            </form>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Request tracker</p>
+                <h2>Open requests</h2>
+              </div>
+            </div>
+            <div id="customerRequestBoard" class="stack-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Service updates</p>
+                <h2>Recent service history</h2>
+              </div>
+            </div>
+            <div id="customerVisitBoard" class="stack-list"></div>
+          </article>
+        </section>
+        </div>
+
+        <div class="workspace-panel-stack hidden" data-workspace-panel="admin">
+        <section class="dashboard-grid">
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Accounting</p>
+                <h2>QuickBooks export feed</h2>
+              </div>
+            </div>
+            <p id="quickbooksSummary" class="meta-copy"></p>
+            <div id="quickbooksBoard" class="stack-list"></div>
+          </article>
+        </section>
+        </div>
+
+        <div class="workspace-panel-stack hidden" data-workspace-panel="field">
+        <section class="portal-grid">
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Technician portal</p>
+                <h2>Today’s route</h2>
+              </div>
+            </div>
+
+            <label class="field">
+              Employee
+              <select id="employeeSelect"></select>
+            </label>
+
+            <div id="portalSummary" class="muted-card"></div>
+            <div id="portalRouteList" class="stack-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Field log</p>
+                <h2>Capture service visit</h2>
+              </div>
+            </div>
+
+            <form id="visitForm" class="form-grid">
+              <label class="field">
+                Assigned pool
+                <select id="poolSelect" name="poolId"></select>
+              </label>
+
+              <div class="split-grid">
+                <label class="field">
+                  Arrive
+                  <input id="arrivalAt" name="arrivalAt" type="datetime-local" required />
+                </label>
+                <label class="field">
+                  Depart
+                  <input id="departureAt" name="departureAt" type="datetime-local" required />
+                </label>
+              </div>
+
+              <div class="split-grid chemistry-grid">
+                <label class="field">
+                  Chlorine (ppm)
+                  <input name="chlorine" type="number" step="0.1" placeholder="3.2" />
+                </label>
+                <label class="field">
+                  pH
+                  <input name="ph" type="number" step="0.1" placeholder="7.5" />
+                </label>
+                <label class="field">
+                  Alkalinity
+                  <input name="alkalinity" type="number" step="1" placeholder="95" />
+                </label>
+                <label class="field">
+                  Salinity
+                  <input name="salinity" type="number" step="1" placeholder="3200" />
+                </label>
+                <label class="field">
+                  Water temp
+                  <input name="temperature" type="number" step="1" placeholder="81" />
+                </label>
+              </div>
+
+              <label class="field">
+                Chemicals used
+                <textarea
+                  name="chemicals"
+                  rows="4"
+                  placeholder="Liquid chlorine|1 gal|5.25&#10;Muriatic acid|12 oz|2.40"
+                ></textarea>
+              </label>
+
+              <div class="split-grid">
+                <label class="field">
+                  Remarks
+                  <textarea
+                    name="remarks"
+                    rows="4"
+                    placeholder="Skimmed, brushed walls, vacuumed, emptied baskets..."
+                    required
+                  ></textarea>
+                </label>
+                <label class="field">
+                  Recommendations
+                  <textarea
+                    name="recommendations"
+                    rows="4"
+                    placeholder="Recommend filter clean next week, inspect salt cell..."
+                  ></textarea>
+                </label>
+              </div>
+
+              <div class="photo-panel">
+                <div class="photo-actions">
+                  <label class="btn btn-secondary photo-picker">
+                    Add photos
+                    <input id="photoInput" type="file" accept="image/*" capture="environment" multiple />
+                  </label>
+                  <button id="captureLocationBtn" class="btn btn-ghost" type="button">
+                    Use current location
+                  </button>
+                </div>
+                <p id="locationStatus" class="meta-copy"></p>
+                <div id="photoPreview" class="photo-preview"></div>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Save Visit</button>
+            </form>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Expenses</p>
+                <h2>Route expense intake</h2>
+              </div>
+            </div>
+            <form id="expenseForm" class="form-grid">
+              <div class="split-grid">
+                <label class="field">
+                  Employee
+                  <select id="expenseEmployeeSelect" name="employeeId"></select>
+                </label>
+                <label class="field">
+                  Pool
+                  <select id="expensePoolSelect" name="poolId"></select>
+                </label>
+              </div>
+              <div class="split-grid">
+                <label class="field">
+                  Category
+                  <select name="category" required>
+                    <option value="fuel">Fuel</option>
+                    <option value="liquid chlorine">Liquid chlorine</option>
+                    <option value="tabs">Tabs</option>
+                    <option value="muriatic acid">Muriatic acid</option>
+                    <option value="salt">Salt</option>
+                    <option value="stabilizer">Stabilizer</option>
+                    <option value="algaecide">Algaecide</option>
+                    <option value="phosphate remover">Phosphate remover</option>
+                    <option value="filter clean">Filter clean</option>
+                    <option value="parts">Parts</option>
+                    <option value="repairs">Repairs</option>
+                    <option value="supplies">Supplies</option>
+                    <option value="tolls">Tolls</option>
+                    <option value="disposal">Disposal</option>
+                  </select>
+                </label>
+                <label class="field">
+                  Amount
+                  <input name="amount" type="number" step="0.01" placeholder="48.32" required />
+                </label>
+              </div>
+              <div class="split-grid">
+                <label class="field">
+                  Vendor
+                  <input name="vendor" placeholder="Shell" required />
+                </label>
+                <label class="field">
+                  Date
+                  <input id="expenseDate" name="date" type="date" required />
+                </label>
+              </div>
+              <label class="field">
+                Memo
+                <textarea name="memo" rows="3" placeholder="Fuel stop during north county route" required></textarea>
+              </label>
+              <button class="btn btn-secondary" type="submit">Save Expense</button>
+            </form>
+          </article>
+
+          <article class="panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Sales capture</p>
+                <h2>Log upsell or referral</h2>
+              </div>
+            </div>
+            <form id="salesForm" class="form-grid">
+              <div class="split-grid">
+                <label class="field">
+                  Employee
+                  <select id="salesEmployeeSelect" name="employeeId"></select>
+                </label>
+                <label class="field">
+                  Related pool
+                  <select id="salesPoolSelect" name="poolId"></select>
+                </label>
+              </div>
+              <div class="split-grid">
+                <label class="field">
+                  Type
+                  <select name="type">
+                    <option value="upsell">Upsell</option>
+                    <option value="equipment-upgrade">Equipment upgrade</option>
+                    <option value="repair">Repair</option>
+                    <option value="new-service">New service customer</option>
+                    <option value="referral">Referral</option>
+                  </select>
+                </label>
+                <label class="field">
+                  Estimated value
+                  <input name="estimatedValue" type="number" step="0.01" placeholder="850.00" required />
+                </label>
+              </div>
+              <div class="split-grid">
+                <label class="field">
+                  Customer
+                  <input name="customerName" placeholder="Customer or prospect name" required />
+                </label>
+                <label class="field">
+                  Contact
+                  <input name="contactName" placeholder="Contact person" />
+                </label>
+              </div>
+              <div class="split-grid">
+                <label class="field">
+                  Phone
+                  <input name="contactPhone" placeholder="(561) 555-0123" />
+                </label>
+                <label class="field">
+                  Title
+                  <input name="title" placeholder="Filter clean and seal replacement" required />
+                </label>
+              </div>
+              <label class="field">
+                Notes
+                <textarea name="notes" rows="4" placeholder="What the employee saw, what the customer asked for, and next step." required></textarea>
+              </label>
+              <button class="btn btn-primary" type="submit">Save Opportunity</button>
+            </form>
+          </article>
+        </section>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="/runtime-config.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

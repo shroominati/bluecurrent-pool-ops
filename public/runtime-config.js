@@ -1,0 +1,3 @@
+window.POOL_OPS_API_BASE = window.POOL_OPS_API_BASE || "";
+window.WRECK_API_BASE = window.WRECK_API_BASE || window.POOL_OPS_API_BASE;
+window.REVEAL_API_BASE = window.REVEAL_API_BASE || window.POOL_OPS_API_BASE;

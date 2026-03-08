@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+devnet-id.json
+jackpot-rounds
+my-keypair.json
+data/markets-db.json
+.env
+dist
+onchain/target
+onchain/node_modules
+__pycache__/
+*.pyc

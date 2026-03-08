@@ -1,0 +1,2245 @@
+{
+  "company": {
+    "name": "BlueCurrent Pool Ops",
+    "timezone": "America/New_York",
+    "headquarters": "West Palm Beach, FL",
+    "serviceArea": "Palm Beach County coastal and inland routes",
+    "quickbooks": {
+      "mode": "export-ready",
+      "vendor": "QuickBooks Online",
+      "syncState": "credentials-required",
+      "lastSyncAt": null
+    }
+  },
+  "employees": [
+    {
+      "id": "emp-mia-rivera",
+      "name": "Mia Rivera",
+      "role": "Lead Technician",
+      "status": "active",
+      "email": "mia@bluecurrent.local",
+      "phone": "(561) 555-0147",
+      "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%230ea5a0%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%233b82f6%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3EMR%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "homeBase": {
+        "lat": 26.7153,
+        "lon": -80.0534,
+        "label": "West Palm dispatch"
+      },
+      "vehicle": {
+        "unit": "Truck 12",
+        "mpg": 13.5,
+        "fuelType": "gas"
+      },
+      "hourlyRate": 28,
+      "capacityMinutes": 510,
+      "specialties": [
+        "green-to-clean",
+        "salt systems"
+      ],
+      "certifications": [
+        "CPO",
+        "Salt cell service"
+      ],
+      "hireDate": "2022-04-18",
+      "emergencyContact": "L. Rivera • (561) 555-0113",
+      "profileNote": "Trusted with route recovery, algae treatment jobs, and customer escalations.",
+      "payroll": {
+        "payType": "hourly",
+        "hourlyRate": 28,
+        "overtimeRate": 42,
+        "ytdHours": 398,
+        "ytdGross": 12044,
+        "nextPayDate": "2026-03-13",
+        "bankLast4": "1842",
+        "payStubs": [
+          {
+            "id": "stub-mia-1",
+            "periodStart": "2026-02-15",
+            "periodEnd": "2026-02-28",
+            "gross": 2268,
+            "net": 1712,
+            "status": "paid"
+          },
+          {
+            "id": "stub-mia-2",
+            "periodStart": "2026-03-01",
+            "periodEnd": "2026-03-13",
+            "gross": 2142,
+            "net": 1628,
+            "status": "processing"
+          }
+        ]
+      }
+    },
+    {
+      "id": "emp-darius-hall",
+      "name": "Darius Hall",
+      "role": "Route Technician",
+      "status": "active",
+      "email": "darius@bluecurrent.local",
+      "phone": "(561) 555-0192",
+      "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%232563eb%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230ea5a0%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3EDH%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "homeBase": {
+        "lat": 26.5898,
+        "lon": -80.1003,
+        "label": "Lake Worth yard"
+      },
+      "vehicle": {
+        "unit": "Truck 18",
+        "mpg": 14.8,
+        "fuelType": "gas"
+      },
+      "hourlyRate": 24,
+      "capacityMinutes": 480,
+      "specialties": [
+        "vacuuming",
+        "tile cleanups"
+      ],
+      "certifications": [
+        "Route standards"
+      ],
+      "hireDate": "2023-08-07",
+      "emergencyContact": "K. Hall • (561) 555-0176",
+      "profileNote": "Strong on consistency, fast deck cleanup, and chemical restocks.",
+      "payroll": {
+        "payType": "hourly",
+        "hourlyRate": 24,
+        "overtimeRate": 36,
+        "ytdHours": 356,
+        "ytdGross": 8760,
+        "nextPayDate": "2026-03-13",
+        "bankLast4": "9011",
+        "payStubs": [
+          {
+            "id": "stub-darius-1",
+            "periodStart": "2026-02-15",
+            "periodEnd": "2026-02-28",
+            "gross": 1888,
+            "net": 1442,
+            "status": "paid"
+          },
+          {
+            "id": "stub-darius-2",
+            "periodStart": "2026-03-01",
+            "periodEnd": "2026-03-13",
+            "gross": 1796,
+            "net": 1384,
+            "status": "processing"
+          }
+        ]
+      }
+    },
+    {
+      "id": "emp-serena-cho",
+      "name": "Serena Cho",
+      "role": "Senior Technician",
+      "status": "active",
+      "email": "serena@bluecurrent.local",
+      "phone": "(561) 555-0108",
+      "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%238b5cf6%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230ea5a0%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3ESC%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "homeBase": {
+        "lat": 26.4615,
+        "lon": -80.0728,
+        "label": "Delray staging"
+      },
+      "vehicle": {
+        "unit": "Van 04",
+        "mpg": 16.2,
+        "fuelType": "gas"
+      },
+      "hourlyRate": 30,
+      "capacityMinutes": 500,
+      "specialties": [
+        "automation",
+        "equipment checks"
+      ],
+      "certifications": [
+        "CPO",
+        "Pentair automation"
+      ],
+      "hireDate": "2021-11-02",
+      "emergencyContact": "J. Cho • (561) 555-0161",
+      "profileNote": "Handles automation checks, heaters, and higher-value service accounts.",
+      "payroll": {
+        "payType": "hourly",
+        "hourlyRate": 30,
+        "overtimeRate": 45,
+        "ytdHours": 402,
+        "ytdGross": 13218,
+        "nextPayDate": "2026-03-13",
+        "bankLast4": "7750",
+        "payStubs": [
+          {
+            "id": "stub-serena-1",
+            "periodStart": "2026-02-15",
+            "periodEnd": "2026-02-28",
+            "gross": 2410,
+            "net": 1819,
+            "status": "paid"
+          },
+          {
+            "id": "stub-serena-2",
+            "periodStart": "2026-03-01",
+            "periodEnd": "2026-03-13",
+            "gross": 2280,
+            "net": 1731,
+            "status": "processing"
+          }
+        ]
+      }
+    },
+    {
+      "id": "emp-owen-price",
+      "name": "Owen Price",
+      "role": "New Hire Technician",
+      "status": "active",
+      "email": "owen@bluecurrent.local",
+      "phone": "(561) 555-0166",
+      "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f59e0b%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230ea5a0%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3EOP%3C%2Ftext%3E%3C%2Fsvg%3E",
+      "homeBase": {
+        "lat": 26.3696,
+        "lon": -80.1289,
+        "label": "Boca service pod"
+      },
+      "vehicle": {
+        "unit": "Truck 21",
+        "mpg": 15.1,
+        "fuelType": "gas"
+      },
+      "hourlyRate": 21,
+      "capacityMinutes": 450,
+      "specialties": [
+        "chem logs",
+        "filter checks"
+      ],
+      "certifications": [
+        "Water chemistry basics"
+      ],
+      "hireDate": "2025-05-11",
+      "emergencyContact": "A. Price • (561) 555-0142",
+      "profileNote": "Shadow-ready on advanced repairs, focused on clean logs and photos.",
+      "payroll": {
+        "payType": "hourly",
+        "hourlyRate": 21,
+        "overtimeRate": 31.5,
+        "ytdHours": 288,
+        "ytdGross": 6128,
+        "nextPayDate": "2026-03-13",
+        "bankLast4": "4468",
+        "payStubs": [
+          {
+            "id": "stub-owen-1",
+            "periodStart": "2026-02-15",
+            "periodEnd": "2026-02-28",
+            "gross": 1596,
+            "net": 1238,
+            "status": "paid"
+          },
+          {
+            "id": "stub-owen-2",
+            "periodStart": "2026-03-01",
+            "periodEnd": "2026-03-13",
+            "gross": 1480,
+            "net": 1154,
+            "status": "processing"
+          }
+        ]
+      }
+    }
+  ],
+  "pools": [
+    {
+      "id": "pool-alton",
+      "customerName": "Alton Residence",
+      "address": "128 Ridge Lake Rd, West Palm Beach, FL",
+      "lat": 26.7421,
+      "lon": -80.0863,
+      "neighborhood": "West Palm",
+      "gallons": 17000,
+      "serviceMinutes": 42,
+      "serviceDays": [
+        "sat",
+        "wed"
+      ],
+      "priority": "high",
+      "equipment": [
+        "salt cell",
+        "heater"
+      ],
+      "gateCode": "#1942",
+      "notes": "Palm debris heavy after storms.",
+      "chemicalProfile": {
+        "chlorineTarget": "2.5-4.0",
+        "phTarget": "7.4-7.6"
+      }
+    },
+    {
+      "id": "pool-banyan",
+      "customerName": "Banyan Club HOA",
+      "address": "441 Banyan Crest, Palm Beach Gardens, FL",
+      "lat": 26.8194,
+      "lon": -80.1191,
+      "neighborhood": "Palm Beach Gardens",
+      "gallons": 24000,
+      "serviceMinutes": 52,
+      "serviceDays": [
+        "sat",
+        "tue"
+      ],
+      "priority": "high",
+      "equipment": [
+        "ozone",
+        "auto-fill"
+      ],
+      "gateCode": "Office key",
+      "notes": "Commercial deck wash every Saturday.",
+      "chemicalProfile": {
+        "chlorineTarget": "3.0-5.0",
+        "phTarget": "7.3-7.6"
+      },
+      "lastServiceAt": "2026-03-07T15:42:00.000Z",
+      "lastWaterSample": {
+        "chlorine": 3.6,
+        "ph": 7.4,
+        "alkalinity": 91,
+        "salinity": 3100,
+        "temperature": 81
+      },
+      "lastRecommendations": "Continue standard weekly service."
+    },
+    {
+      "id": "pool-coral",
+      "customerName": "Coral Hammock",
+      "address": "722 Coral Springs Dr, Jupiter, FL",
+      "lat": 26.9216,
+      "lon": -80.1062,
+      "neighborhood": "Jupiter",
+      "gallons": 14500,
+      "serviceMinutes": 38,
+      "serviceDays": [
+        "sat"
+      ],
+      "priority": "medium",
+      "equipment": [
+        "variable pump"
+      ],
+      "gateCode": "Call owner",
+      "notes": "Small screen enclosure.",
+      "chemicalProfile": {
+        "chlorineTarget": "2.5-4.0",
+        "phTarget": "7.4-7.7"
+      }
+    },
+    {
+      "id": "pool-drift",
+      "customerName": "Driftwood Lane",
+      "address": "901 Driftwood Ln, Lake Worth Beach, FL",
+      "lat": 26.6199,
+      "lon": -80.0784,
+      "neighborhood": "Lake Worth",
+      "gallons": 13200,
+      "serviceMinutes": 35,
+      "serviceDays": [
+        "sat",
+        "thu"
+      ],
+      "priority": "medium",
+      "equipment": [
+        "cartridge filter"
+      ],
+      "gateCode": "#8821",
+      "notes": "Dog in yard, use side gate.",
+      "chemicalProfile": {
+        "chlorineTarget": "2.0-4.0",
+        "phTarget": "7.4-7.6"
+      }
+    },
+    {
+      "id": "pool-estuary",
+      "customerName": "Estuary Point",
+      "address": "1608 Harbor Sound, Wellington, FL",
+      "lat": 26.6507,
+      "lon": -80.2189,
+      "neighborhood": "Wellington",
+      "gallons": 19500,
+      "serviceMinutes": 48,
+      "serviceDays": [
+        "sat"
+      ],
+      "priority": "high",
+      "equipment": [
+        "salt cell",
+        "spa spillover"
+      ],
+      "gateCode": "#7600",
+      "notes": "Needs careful balancing after rain.",
+      "chemicalProfile": {
+        "chlorineTarget": "3.0-4.0",
+        "phTarget": "7.4-7.6"
+      }
+    },
+    {
+      "id": "pool-foxtail",
+      "customerName": "Foxtail Court",
+      "address": "47 Foxtail Ct, Boynton Beach, FL",
+      "lat": 26.5534,
+      "lon": -80.0992,
+      "neighborhood": "Boynton",
+      "gallons": 14800,
+      "serviceMinutes": 37,
+      "serviceDays": [
+        "sat",
+        "wed"
+      ],
+      "priority": "medium",
+      "equipment": [
+        "DE filter"
+      ],
+      "gateCode": "#4519",
+      "notes": "Client wants photo after vacuum every visit.",
+      "chemicalProfile": {
+        "chlorineTarget": "2.5-4.0",
+        "phTarget": "7.4-7.6"
+      }
+    },
+    {
+      "id": "pool-golden",
+      "customerName": "Golden Isles",
+      "address": "315 Golden Isles Dr, Delray Beach, FL",
+      "lat": 26.4553,
+      "lon": -80.0821,
+      "neighborhood": "Delray",
+      "gallons": 16000,
+      "serviceMinutes": 41,
+      "serviceDays": [
+        "sat"
+      ],
+      "priority": "medium",
+      "equipment": [
+        "automation",
+        "spa"
+      ],
+      "gateCode": "Front desk",
+      "notes": "Check spa spillover programming monthly.",
+      "chemicalProfile": {
+        "chlorineTarget": "3.0-4.0",
+        "phTarget": "7.4-7.6"
+      },
+      "lastServiceAt": "2026-03-07T14:39:00.000Z",
+      "lastWaterSample": {
+        "chlorine": 3.1,
+        "ph": 7.5,
+        "alkalinity": 96,
+        "salinity": 3150,
+        "temperature": 82
+      },
+      "lastRecommendations": "No follow-up needed until next regular visit."
+    },
+    {
+      "id": "pool-harbor",
+      "customerName": "Harbor View",
+      "address": "889 Harbor View Dr, Delray Beach, FL",
+      "lat": 26.4744,
+      "lon": -80.0613,
+      "neighborhood": "Delray",
+      "gallons": 22000,
+      "serviceMinutes": 55,
+      "serviceDays": [
+        "sat"
+      ],
+      "priority": "high",
+      "equipment": [
+        "heater",
+        "salt cell"
+      ],
+      "gateCode": "#9901",
+      "notes": "Recent algae bloom, needs extra brushing.",
+      "chemicalProfile": {
+        "chlorineTarget": "3.5-5.0",
+        "phTarget": "7.2-7.5"
+      }
+    },
+    {
+      "id": "pool-indigo",
+      "customerName": "Indigo Preserve",
+      "address": "1721 Indigo Preserve, Boca Raton, FL",
+      "lat": 26.3567,
+      "lon": -80.1117,
+      "neighborhood": "Boca",
+      "gallons": 15500,
+      "serviceMinutes": 39,
+      "serviceDays": [
+        "sat",
+        "tue"
+      ],
+      "priority": "medium",
+      "equipment": [
+        "variable pump",
+        "robot"
+      ],
+      "gateCode": "#2380",
+      "notes": "Owner tracks waterline photos closely.",
+      "chemicalProfile": {
+        "chlorineTarget": "2.5-4.0",
+        "phTarget": "7.4-7.6"
+      }
+    },
+    {
+      "id": "pool-jasmine",
+      "customerName": "Jasmine Keys",
+      "address": "402 Jasmine Keys Blvd, Boca Raton, FL",
+      "lat": 26.4035,
+      "lon": -80.1368,
+      "neighborhood": "Boca",
+      "gallons": 18800,
+      "serviceMinutes": 44,
+      "serviceDays": [
+        "sat"
+      ],
+      "priority": "medium",
+      "equipment": [
+        "salt cell",
+        "automation"
+      ],
+      "gateCode": "Guard gate",
+      "notes": "Guard needs company badge.",
+      "chemicalProfile": {
+        "chlorineTarget": "3.0-4.5",
+        "phTarget": "7.4-7.6"
+      }
+    },
+    {
+      "id": "pool-keystone",
+      "customerName": "Keystone Estates",
+      "address": "51 Keystone Ct, Palm Beach Gardens, FL",
+      "lat": 26.8488,
+      "lon": -80.1577,
+      "neighborhood": "Palm Beach Gardens",
+      "gallons": 21000,
+      "serviceMinutes": 49,
+      "serviceDays": [
+        "sat"
+      ],
+      "priority": "high",
+      "equipment": [
+        "DE filter",
+        "heater"
+      ],
+      "gateCode": "#1010",
+      "notes": "Leaves from ficus hedge clog skimmers.",
+      "chemicalProfile": {
+        "chlorineTarget": "3.0-5.0",
+        "phTarget": "7.3-7.5"
+      }
+    },
+    {
+      "id": "pool-lagoon",
+      "customerName": "Lagoon Pointe",
+      "address": "210 Lagoon Pointe, Lake Worth Beach, FL",
+      "lat": 26.603,
+      "lon": -80.1232,
+      "neighborhood": "Lake Worth",
+      "gallons": 17500,
+      "serviceMinutes": 43,
+      "serviceDays": [
+        "sat",
+        "thu"
+      ],
+      "priority": "medium",
+      "equipment": [
+        "cartridge filter",
+        "spa"
+      ],
+      "gateCode": "#6125",
+      "notes": "Spa spillway calcium watch.",
+      "chemicalProfile": {
+        "chlorineTarget": "2.5-4.0",
+        "phTarget": "7.4-7.7"
+      }
+    },
+    {
+      "id": "pool-marina-cove-estates-212-harbor-watch-l",
+      "customerName": "Marina Cove Estates",
+      "address": "212 Harbor Watch Ln, Delray Beach, FL",
+      "lat": 26.4475,
+      "lon": -80.0618,
+      "neighborhood": "Delray Beach",
+      "gallons": 19000,
+      "serviceMinutes": 58,
+      "serviceDays": [],
+      "priority": "high",
+      "equipment": [],
+      "gateCode": "",
+      "notes": "Workflow import demo: add phosphate treatment and photo set.",
+      "chemicalProfile": {
+        "chlorineTarget": "2.5-4.0",
+        "phTarget": "7.4-7.6"
+      },
+      "externalRefs": {
+        "workflowPoolId": "ext-pool-212"
+      },
+      "importedFromWorkflowAt": "2026-03-07T22:45:39.130Z"
+    },
+    {
+      "id": "pool-palm-vista-hoa-988-waterside-ave-",
+      "customerName": "Palm Vista HOA",
+      "address": "988 Waterside Ave, West Palm Beach, FL",
+      "lat": 26.7261,
+      "lon": -80.0674,
+      "neighborhood": "West Palm",
+      "gallons": 26000,
+      "serviceMinutes": 52,
+      "serviceDays": [],
+      "priority": "medium",
+      "equipment": [],
+      "gateCode": "",
+      "notes": "Workflow import demo: verify booster pump noise report.",
+      "chemicalProfile": {
+        "chlorineTarget": "2.5-4.0",
+        "phTarget": "7.4-7.6"
+      },
+      "externalRefs": {
+        "workflowPoolId": "ext-pool-988"
+      },
+      "importedFromWorkflowAt": "2026-03-07T22:45:39.130Z"
+    }
+  ],
+  "visits": [
+    {
+      "id": "visit-seeded-1",
+      "employeeId": "emp-mia-rivera",
+      "poolId": "pool-alton",
+      "date": "2026-03-07",
+      "arrivalAt": "2026-03-07T08:10:00.000Z",
+      "departureAt": "2026-03-07T08:53:00.000Z",
+      "actualLocation": {
+        "lat": 26.7419,
+        "lon": -80.0862,
+        "accuracyFeet": 42
+      },
+      "waterSample": {
+        "chlorine": 3.4,
+        "ph": 7.5,
+        "alkalinity": 92,
+        "salinity": 3200,
+        "temperature": 81
+      },
+      "chemicalsUsed": [
+        {
+          "product": "Liquid chlorine",
+          "amount": "0.8 gal",
+          "cost": 4.4
+        },
+        {
+          "product": "Phosphate remover",
+          "amount": "4 oz",
+          "cost": 2.3
+        }
+      ],
+      "photos": [
+        {
+          "id": "photo-seeded-1",
+          "name": "alton-skimmer.jpg",
+          "caption": "Deck and skimmer basket cleared",
+          "dataUrl": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='220'><rect width='100%' height='100%' fill='%230e8f8e'/><circle cx='160' cy='110' r='74' fill='%23b9f3eb'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-size='22' font-family='Arial' fill='%23032733'>Service Photo</text></svg>"
+        }
+      ],
+      "remarks": "Brushed walls, emptied skimmer, cleaned pump basket.",
+      "recommendations": "Monitor phosphates next visit if debris load stays high.",
+      "routeContext": {
+        "plannedOrder": 1,
+        "plannedMilesFromPrev": 6.3
+      },
+      "createdAt": "2026-03-07T08:55:00.000Z"
+    },
+    {
+      "id": "visit-seeded-2",
+      "employeeId": "emp-darius-hall",
+      "poolId": "pool-drift",
+      "date": "2026-03-07",
+      "arrivalAt": "2026-03-07T08:18:00.000Z",
+      "departureAt": "2026-03-07T08:52:00.000Z",
+      "actualLocation": {
+        "lat": 26.6201,
+        "lon": -80.0788,
+        "accuracyFeet": 55
+      },
+      "waterSample": {
+        "chlorine": 2.1,
+        "ph": 7.8,
+        "alkalinity": 108,
+        "salinity": 0,
+        "temperature": 80
+      },
+      "chemicalsUsed": [
+        {
+          "product": "Muriatic acid",
+          "amount": "18 oz",
+          "cost": 3.1
+        },
+        {
+          "product": "Tabs",
+          "amount": "2 puck",
+          "cost": 1.8
+        }
+      ],
+      "photos": [],
+      "remarks": "Vacuumed floor and backwashed filter.",
+      "recommendations": "pH slightly high, recheck after acid circulation.",
+      "routeContext": {
+        "plannedOrder": 1,
+        "plannedMilesFromPrev": 4.1
+      },
+      "createdAt": "2026-03-07T08:54:00.000Z"
+    },
+    {
+      "id": "visit-seeded-3",
+      "employeeId": "emp-serena-cho",
+      "poolId": "pool-harbor",
+      "date": "2026-03-06",
+      "arrivalAt": "2026-03-06T13:10:00.000Z",
+      "departureAt": "2026-03-06T14:06:00.000Z",
+      "actualLocation": {
+        "lat": 26.4743,
+        "lon": -80.0615,
+        "accuracyFeet": 38
+      },
+      "waterSample": {
+        "chlorine": 1.1,
+        "ph": 7.3,
+        "alkalinity": 88,
+        "salinity": 3250,
+        "temperature": 79
+      },
+      "chemicalsUsed": [
+        {
+          "product": "Liquid chlorine",
+          "amount": "1.5 gal",
+          "cost": 8.25
+        },
+        {
+          "product": "Algaecide",
+          "amount": "12 oz",
+          "cost": 5.1
+        }
+      ],
+      "photos": [],
+      "remarks": "Green tint reduced after prior shock treatment.",
+      "recommendations": "Schedule follow-up and inspect salt cell output.",
+      "routeContext": {
+        "plannedOrder": 4,
+        "plannedMilesFromPrev": 3.7
+      },
+      "createdAt": "2026-03-06T14:08:00.000Z"
+    },
+    {
+      "id": "0a073b09-60c2-4f4a-9721-90115fad019e",
+      "employeeId": "emp-serena-cho",
+      "poolId": "pool-golden",
+      "date": "2026-03-07",
+      "arrivalAt": "2026-03-07T14:00:00.000Z",
+      "departureAt": "2026-03-07T14:39:00.000Z",
+      "actualLocation": null,
+      "waterSample": {
+        "chlorine": 3.1,
+        "ph": 7.5,
+        "alkalinity": 96,
+        "salinity": 3150,
+        "temperature": 82
+      },
+      "chemicalsUsed": [
+        {
+          "product": "Liquid chlorine",
+          "amount": "0.5 gal",
+          "cost": 2.8
+        }
+      ],
+      "photos": [],
+      "remarks": "Verified pump basket, skimmed, brushed walls, and vacuumed debris.",
+      "recommendations": "No follow-up needed until next regular visit.",
+      "routeContext": {
+        "plannedOrder": 1,
+        "plannedMilesFromPrev": 0.7
+      },
+      "createdAt": "2026-03-07T21:39:19.774Z"
+    },
+    {
+      "id": "56d8b2bc-9875-4234-9af9-6f10f76f9317",
+      "employeeId": "emp-mia-rivera",
+      "poolId": "pool-banyan",
+      "date": "2026-03-07",
+      "arrivalAt": "2026-03-07T15:00:00.000Z",
+      "departureAt": "2026-03-07T15:42:00.000Z",
+      "actualLocation": null,
+      "waterSample": {
+        "chlorine": 3.6,
+        "ph": 7.4,
+        "alkalinity": 91,
+        "salinity": 3100,
+        "temperature": 81
+      },
+      "chemicalsUsed": [
+        {
+          "product": "Liquid chlorine",
+          "amount": "0.4 gal",
+          "cost": 2.1
+        }
+      ],
+      "photos": [],
+      "remarks": "Skimmed, vacuumed, and checked autofill.",
+      "recommendations": "Continue standard weekly service.",
+      "routeContext": {
+        "plannedOrder": 2,
+        "plannedMilesFromPrev": 5.7
+      },
+      "createdAt": "2026-03-07T22:01:27.655Z"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "expense-seeded-1",
+      "date": "2026-03-07",
+      "employeeId": "emp-mia-rivera",
+      "poolId": "pool-banyan",
+      "category": "fuel",
+      "amount": 48.32,
+      "vendor": "Shell",
+      "memo": "Saturday route fill-up",
+      "quickbooksStatus": "pending-export",
+      "createdAt": "2026-03-07T07:03:00.000Z"
+    },
+    {
+      "id": "expense-seeded-2",
+      "date": "2026-03-07",
+      "employeeId": "emp-serena-cho",
+      "poolId": "pool-harbor",
+      "category": "chemicals",
+      "amount": 126.4,
+      "vendor": "Pool Wholesale Supply",
+      "memo": "Shock and acid restock",
+      "quickbooksStatus": "pending-export",
+      "createdAt": "2026-03-07T06:50:00.000Z"
+    },
+    {
+      "id": "04adfe7d-4ff8-4745-aa7f-237243ad15bc",
+      "date": "2026-03-07",
+      "employeeId": "emp-serena-cho",
+      "poolId": "pool-golden",
+      "category": "supplies",
+      "amount": 18.75,
+      "vendor": "Home Depot",
+      "memo": "Replacement vacuum hose cuff",
+      "quickbooksStatus": "pending-export",
+      "createdAt": "2026-03-07T21:39:19.828Z"
+    },
+    {
+      "id": "54ba0906-4f44-4b77-9c02-42a7d3e2da47",
+      "date": "2026-03-07",
+      "employeeId": "emp-mia-rivera",
+      "poolId": "pool-alton",
+      "category": "liquid chlorine",
+      "amount": 12.45,
+      "vendor": "Pinch A Penny",
+      "memo": "Shock restock for algae cleanup",
+      "quickbooksStatus": "pending-export",
+      "createdAt": "2026-03-07T22:51:08.794Z"
+    }
+  ],
+  "salesLeads": [
+    {
+      "id": "sale-seeded-1",
+      "employeeId": "emp-mia-rivera",
+      "poolId": "pool-banyan",
+      "type": "equipment-upgrade",
+      "stage": "quoted",
+      "customerName": "Banyan Club HOA",
+      "contactName": "Facilities Desk",
+      "contactPhone": "(561) 555-0188",
+      "title": "Variable-speed pump upgrade",
+      "notes": "Current pump is loud and power-hungry. Manager requested replacement quote.",
+      "estimatedValue": 2800,
+      "payoutEstimate": 280,
+      "source": "field-observation",
+      "createdAt": "2026-03-07T11:18:00.000Z",
+      "updatedAt": "2026-03-07T14:10:00.000Z"
+    },
+    {
+      "id": "sale-seeded-2",
+      "employeeId": "emp-serena-cho",
+      "poolId": null,
+      "type": "new-service",
+      "stage": "won",
+      "customerName": "Sawgrass Lane Residence",
+      "contactName": "H. Morgan",
+      "contactPhone": "(561) 555-0129",
+      "title": "Weekly pool service conversion",
+      "notes": "Neighbor referral converted to weekly service after deck-side consult.",
+      "estimatedValue": 260,
+      "payoutEstimate": 125,
+      "source": "referral",
+      "createdAt": "2026-03-07T09:22:00.000Z",
+      "updatedAt": "2026-03-07T16:30:00.000Z",
+      "closedAt": "2026-03-07T16:30:00.000Z"
+    },
+    {
+      "id": "fe0ae71a-7769-4da6-ae28-64d5ea988a94",
+      "employeeId": "emp-mia-rivera",
+      "poolId": "pool-alton",
+      "type": "upsell",
+      "stage": "won",
+      "customerName": "Alton Residence",
+      "contactName": "Front office",
+      "contactPhone": "(561) 555-0140",
+      "title": "Salt cell cleaning plan",
+      "notes": "Customer wants monthly cell cleaning and premium chemistry package.",
+      "estimatedValue": 650,
+      "payoutEstimate": 39,
+      "source": "field-submission",
+      "createdAt": "2026-03-07T22:57:35.266Z",
+      "updatedAt": "2026-03-07T22:58:12.237Z",
+      "closedAt": "2026-03-07T22:58:12.237Z"
+    }
+  ],
+  "customerRequests": [
+    {
+      "id": "customer-request-1",
+      "poolId": "pool-alton",
+      "customerUserId": "user-customer-alton",
+      "type": "photo-update",
+      "status": "reviewing",
+      "title": "Need extra before and after photos",
+      "message": "Please upload a wide shot after vacuuming because the landscaping crew leaves debris behind.",
+      "preferredDate": "2026-03-07",
+      "preferredWindow": "after-service",
+      "photos": [],
+      "createdAt": "2026-03-07T07:12:00.000Z",
+      "updatedAt": "2026-03-07T09:05:00.000Z"
+    },
+    {
+      "id": "customer-request-2",
+      "poolId": "pool-harbor",
+      "customerUserId": "user-customer-harbor",
+      "type": "schedule",
+      "status": "scheduled",
+      "title": "Move next visit later in the day",
+      "message": "The deck vendor is on site in the morning. Please arrive after 1 PM if possible.",
+      "preferredDate": "2026-03-09",
+      "preferredWindow": "afternoon",
+      "photos": [],
+      "createdAt": "2026-03-07T08:22:00.000Z",
+      "updatedAt": "2026-03-07T23:51:01.866Z"
+    },
+    {
+      "id": "671a201a-62f2-480b-be13-36c60c8473ec",
+      "poolId": "pool-alton",
+      "customerUserId": "user-customer-alton",
+      "type": "complaint",
+      "status": "reviewing",
+      "title": "Waterline needs attention",
+      "message": "After the windstorm the waterline has visible debris and I wanted the office to review the photos next visit.",
+      "preferredDate": "2026-03-08",
+      "preferredWindow": "afternoon",
+      "referralName": "",
+      "referralPhone": "",
+      "referralAddress": "",
+      "photos": [],
+      "source": "customer-portal",
+      "createdAt": "2026-03-07T23:46:33.519Z",
+      "updatedAt": "2026-03-07T23:46:45.358Z"
+    }
+  ],
+  "workflowItems": [
+    {
+      "id": "workflow-json-url-wf-demo-1001",
+      "externalId": "wf-demo-1001",
+      "sourceType": "json-url",
+      "sourceName": "Demo Workflow Feed",
+      "poolId": "pool-marina-cove-estates-212-harbor-watch-l",
+      "serviceDate": "2026-03-07",
+      "priority": "high",
+      "serviceMinutes": 58,
+      "status": "queued",
+      "workflowLabel": "Recovery clean",
+      "notes": "Workflow import demo: add phosphate treatment and photo set.",
+      "importedAt": "2026-03-07T22:45:39.130Z",
+      "updatedAt": "2026-03-07T22:45:39.130Z"
+    },
+    {
+      "id": "workflow-json-url-wf-demo-1002",
+      "externalId": "wf-demo-1002",
+      "sourceType": "json-url",
+      "sourceName": "Demo Workflow Feed",
+      "poolId": "pool-palm-vista-hoa-988-waterside-ave-",
+      "serviceDate": "2026-03-07",
+      "priority": "medium",
+      "serviceMinutes": 52,
+      "status": "queued",
+      "workflowLabel": "Standard service",
+      "notes": "Workflow import demo: verify booster pump noise report.",
+      "importedAt": "2026-03-07T22:45:39.130Z",
+      "updatedAt": "2026-03-07T22:45:39.130Z"
+    }
+  ],
+  "routePlans": [
+    {
+      "id": "route-2026-03-07-emp-mia-rivera",
+      "date": "2026-03-07",
+      "employeeId": "emp-mia-rivera",
+      "employeeName": "Mia Rivera",
+      "vehicleUnit": "Truck 12",
+      "vehicleMpg": 13.5,
+      "startPoint": {
+        "lat": 26.7153,
+        "lon": -80.0534,
+        "label": "West Palm dispatch"
+      },
+      "stops": [
+        {
+          "sequence": 1,
+          "poolId": "pool-palm-vista-hoa-988-waterside-ave-",
+          "customerName": "Palm Vista HOA",
+          "address": "988 Waterside Ave, West Palm Beach, FL",
+          "neighborhood": "West Palm",
+          "priority": "medium",
+          "serviceMinutes": 52,
+          "milesFromPrev": 1.1,
+          "driveMinutesFromPrev": 4,
+          "coordinates": {
+            "lat": 26.7261,
+            "lon": -80.0674
+          },
+          "workflowLabel": "Standard service",
+          "workflowStatus": "queued",
+          "workflowSourceName": "Demo Workflow Feed",
+          "workflowItems": [
+            {
+              "id": "workflow-json-url-wf-demo-1002",
+              "label": "Standard service",
+              "status": "queued",
+              "externalId": "wf-demo-1002"
+            }
+          ]
+        },
+        {
+          "sequence": 2,
+          "poolId": "pool-alton",
+          "customerName": "Alton Residence",
+          "address": "128 Ridge Lake Rd, West Palm Beach, FL",
+          "neighborhood": "West Palm",
+          "priority": "high",
+          "serviceMinutes": 42,
+          "milesFromPrev": 1.6,
+          "driveMinutesFromPrev": 4,
+          "coordinates": {
+            "lat": 26.7421,
+            "lon": -80.0863
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        },
+        {
+          "sequence": 3,
+          "poolId": "pool-coral",
+          "customerName": "Coral Hammock",
+          "address": "722 Coral Springs Dr, Jupiter, FL",
+          "neighborhood": "Jupiter",
+          "priority": "medium",
+          "serviceMinutes": 38,
+          "milesFromPrev": 12.5,
+          "driveMinutesFromPrev": 29,
+          "coordinates": {
+            "lat": 26.9216,
+            "lon": -80.1062
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        },
+        {
+          "sequence": 4,
+          "poolId": "pool-keystone",
+          "customerName": "Keystone Estates",
+          "address": "51 Keystone Ct, Palm Beach Gardens, FL",
+          "neighborhood": "Palm Beach Gardens",
+          "priority": "high",
+          "serviceMinutes": 49,
+          "milesFromPrev": 5.9,
+          "driveMinutesFromPrev": 14,
+          "coordinates": {
+            "lat": 26.8488,
+            "lon": -80.1577
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        },
+        {
+          "sequence": 5,
+          "poolId": "pool-banyan",
+          "customerName": "Banyan Club HOA",
+          "address": "441 Banyan Crest, Palm Beach Gardens, FL",
+          "neighborhood": "Palm Beach Gardens",
+          "priority": "high",
+          "serviceMinutes": 52,
+          "milesFromPrev": 3.1,
+          "driveMinutesFromPrev": 7,
+          "coordinates": {
+            "lat": 26.8194,
+            "lon": -80.1191
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        },
+        {
+          "sequence": 6,
+          "poolId": "pool-estuary",
+          "customerName": "Estuary Point",
+          "address": "1608 Harbor Sound, Wellington, FL",
+          "neighborhood": "Wellington",
+          "priority": "high",
+          "serviceMinutes": 48,
+          "milesFromPrev": 13.2,
+          "driveMinutesFromPrev": 30,
+          "coordinates": {
+            "lat": 26.6507,
+            "lon": -80.2189
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        }
+      ],
+      "path": [
+        {
+          "lat": 26.7153,
+          "lon": -80.0534,
+          "label": "West Palm dispatch"
+        },
+        {
+          "lat": 26.7261,
+          "lon": -80.0674
+        },
+        {
+          "lat": 26.7421,
+          "lon": -80.0863
+        },
+        {
+          "lat": 26.9216,
+          "lon": -80.1062
+        },
+        {
+          "lat": 26.8488,
+          "lon": -80.1577
+        },
+        {
+          "lat": 26.8194,
+          "lon": -80.1191
+        },
+        {
+          "lat": 26.6507,
+          "lon": -80.2189
+        },
+        {
+          "lat": 26.7153,
+          "lon": -80.0534,
+          "label": "West Palm dispatch"
+        }
+      ],
+      "totalPools": 6,
+      "totalMiles": 48.6,
+      "driveMinutes": 114,
+      "serviceMinutes": 281,
+      "workdayMinutes": 395,
+      "fuelGallons": 3.6,
+      "efficiencyScore": 85,
+      "capacityUse": 0.77,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": 294.8
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
+    },
+    {
+      "id": "route-2026-03-07-emp-darius-hall",
+      "date": "2026-03-07",
+      "employeeId": "emp-darius-hall",
+      "employeeName": "Darius Hall",
+      "vehicleUnit": "Truck 18",
+      "vehicleMpg": 14.8,
+      "startPoint": {
+        "lat": 26.5898,
+        "lon": -80.1003,
+        "label": "Lake Worth yard"
+      },
+      "stops": [
+        {
+          "sequence": 1,
+          "poolId": "pool-lagoon",
+          "customerName": "Lagoon Pointe",
+          "address": "210 Lagoon Pointe, Lake Worth Beach, FL",
+          "neighborhood": "Lake Worth",
+          "priority": "medium",
+          "serviceMinutes": 43,
+          "milesFromPrev": 1.7,
+          "driveMinutesFromPrev": 4,
+          "coordinates": {
+            "lat": 26.603,
+            "lon": -80.1232
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        },
+        {
+          "sequence": 2,
+          "poolId": "pool-drift",
+          "customerName": "Driftwood Lane",
+          "address": "901 Driftwood Ln, Lake Worth Beach, FL",
+          "neighborhood": "Lake Worth",
+          "priority": "medium",
+          "serviceMinutes": 35,
+          "milesFromPrev": 3,
+          "driveMinutesFromPrev": 7,
+          "coordinates": {
+            "lat": 26.6199,
+            "lon": -80.0784
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        },
+        {
+          "sequence": 3,
+          "poolId": "pool-foxtail",
+          "customerName": "Foxtail Court",
+          "address": "47 Foxtail Ct, Boynton Beach, FL",
+          "neighborhood": "Boynton",
+          "priority": "medium",
+          "serviceMinutes": 37,
+          "milesFromPrev": 4.8,
+          "driveMinutesFromPrev": 11,
+          "coordinates": {
+            "lat": 26.5534,
+            "lon": -80.0992
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        }
+      ],
+      "path": [
+        {
+          "lat": 26.5898,
+          "lon": -80.1003,
+          "label": "Lake Worth yard"
+        },
+        {
+          "lat": 26.603,
+          "lon": -80.1232
+        },
+        {
+          "lat": 26.6199,
+          "lon": -80.0784
+        },
+        {
+          "lat": 26.5534,
+          "lon": -80.0992
+        },
+        {
+          "lat": 26.5898,
+          "lon": -80.1003,
+          "label": "Lake Worth yard"
+        }
+      ],
+      "totalPools": 3,
+      "totalMiles": 12,
+      "driveMinutes": 28,
+      "serviceMinutes": 115,
+      "workdayMinutes": 143,
+      "fuelGallons": 0.8,
+      "efficiencyScore": 94,
+      "capacityUse": 0.3,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": 66.9
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
+    },
+    {
+      "id": "route-2026-03-07-emp-serena-cho",
+      "date": "2026-03-07",
+      "employeeId": "emp-serena-cho",
+      "employeeName": "Serena Cho",
+      "vehicleUnit": "Van 04",
+      "vehicleMpg": 16.2,
+      "startPoint": {
+        "lat": 26.4615,
+        "lon": -80.0728,
+        "label": "Delray staging"
+      },
+      "stops": [
+        {
+          "sequence": 1,
+          "poolId": "pool-golden",
+          "customerName": "Golden Isles",
+          "address": "315 Golden Isles Dr, Delray Beach, FL",
+          "neighborhood": "Delray",
+          "priority": "medium",
+          "serviceMinutes": 41,
+          "milesFromPrev": 0.7,
+          "driveMinutesFromPrev": 4,
+          "coordinates": {
+            "lat": 26.4553,
+            "lon": -80.0821
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        },
+        {
+          "sequence": 2,
+          "poolId": "pool-marina-cove-estates-212-harbor-watch-l",
+          "customerName": "Marina Cove Estates",
+          "address": "212 Harbor Watch Ln, Delray Beach, FL",
+          "neighborhood": "Delray Beach",
+          "priority": "high",
+          "serviceMinutes": 58,
+          "milesFromPrev": 1.4,
+          "driveMinutesFromPrev": 4,
+          "coordinates": {
+            "lat": 26.4475,
+            "lon": -80.0618
+          },
+          "workflowLabel": "Recovery clean",
+          "workflowStatus": "queued",
+          "workflowSourceName": "Demo Workflow Feed",
+          "workflowItems": [
+            {
+              "id": "workflow-json-url-wf-demo-1001",
+              "label": "Recovery clean",
+              "status": "queued",
+              "externalId": "wf-demo-1001"
+            }
+          ]
+        },
+        {
+          "sequence": 3,
+          "poolId": "pool-harbor",
+          "customerName": "Harbor View",
+          "address": "889 Harbor View Dr, Delray Beach, FL",
+          "neighborhood": "Delray",
+          "priority": "high",
+          "serviceMinutes": 55,
+          "milesFromPrev": 1.9,
+          "driveMinutesFromPrev": 4,
+          "coordinates": {
+            "lat": 26.4744,
+            "lon": -80.0613
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        }
+      ],
+      "path": [
+        {
+          "lat": 26.4615,
+          "lon": -80.0728,
+          "label": "Delray staging"
+        },
+        {
+          "lat": 26.4553,
+          "lon": -80.0821
+        },
+        {
+          "lat": 26.4475,
+          "lon": -80.0618
+        },
+        {
+          "lat": 26.4744,
+          "lon": -80.0613
+        },
+        {
+          "lat": 26.4615,
+          "lon": -80.0728,
+          "label": "Delray staging"
+        }
+      ],
+      "totalPools": 3,
+      "totalMiles": 5.1,
+      "driveMinutes": 16,
+      "serviceMinutes": 154,
+      "workdayMinutes": 170,
+      "fuelGallons": 0.3,
+      "efficiencyScore": 97,
+      "capacityUse": 0.34,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": 32.5
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
+    },
+    {
+      "id": "route-2026-03-07-emp-owen-price",
+      "date": "2026-03-07",
+      "employeeId": "emp-owen-price",
+      "employeeName": "Owen Price",
+      "vehicleUnit": "Truck 21",
+      "vehicleMpg": 15.1,
+      "startPoint": {
+        "lat": 26.3696,
+        "lon": -80.1289,
+        "label": "Boca service pod"
+      },
+      "stops": [
+        {
+          "sequence": 1,
+          "poolId": "pool-indigo",
+          "customerName": "Indigo Preserve",
+          "address": "1721 Indigo Preserve, Boca Raton, FL",
+          "neighborhood": "Boca",
+          "priority": "medium",
+          "serviceMinutes": 39,
+          "milesFromPrev": 1.4,
+          "driveMinutesFromPrev": 4,
+          "coordinates": {
+            "lat": 26.3567,
+            "lon": -80.1117
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        },
+        {
+          "sequence": 2,
+          "poolId": "pool-jasmine",
+          "customerName": "Jasmine Keys",
+          "address": "402 Jasmine Keys Blvd, Boca Raton, FL",
+          "neighborhood": "Boca",
+          "priority": "medium",
+          "serviceMinutes": 44,
+          "milesFromPrev": 3.6,
+          "driveMinutesFromPrev": 8,
+          "coordinates": {
+            "lat": 26.4035,
+            "lon": -80.1368
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": []
+        }
+      ],
+      "path": [
+        {
+          "lat": 26.3696,
+          "lon": -80.1289,
+          "label": "Boca service pod"
+        },
+        {
+          "lat": 26.3567,
+          "lon": -80.1117
+        },
+        {
+          "lat": 26.4035,
+          "lon": -80.1368
+        },
+        {
+          "lat": 26.3696,
+          "lon": -80.1289,
+          "label": "Boca service pod"
+        }
+      ],
+      "totalPools": 2,
+      "totalMiles": 7.4,
+      "driveMinutes": 18,
+      "serviceMinutes": 83,
+      "workdayMinutes": 101,
+      "fuelGallons": 0.5,
+      "efficiencyScore": 95,
+      "capacityUse": 0.22,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": 40.4
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
+    },
+    {
+      "id": "route-2026-03-09-emp-mia-rivera",
+      "date": "2026-03-09",
+      "employeeId": "emp-mia-rivera",
+      "employeeName": "Mia Rivera",
+      "vehicleUnit": "Truck 12",
+      "vehicleMpg": 13.5,
+      "startPoint": {
+        "lat": 26.7153,
+        "lon": -80.0534,
+        "label": "West Palm dispatch"
+      },
+      "stops": [],
+      "path": [
+        {
+          "lat": 26.7153,
+          "lon": -80.0534,
+          "label": "West Palm dispatch"
+        },
+        {
+          "lat": 26.7153,
+          "lon": -80.0534,
+          "label": "West Palm dispatch"
+        }
+      ],
+      "totalPools": 0,
+      "totalMiles": 0,
+      "driveMinutes": 0,
+      "serviceMinutes": 0,
+      "workdayMinutes": 0,
+      "fuelGallons": 0,
+      "efficiencyScore": 100,
+      "capacityUse": 0,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": -6.4
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
+    },
+    {
+      "id": "route-2026-03-09-emp-darius-hall",
+      "date": "2026-03-09",
+      "employeeId": "emp-darius-hall",
+      "employeeName": "Darius Hall",
+      "vehicleUnit": "Truck 18",
+      "vehicleMpg": 14.8,
+      "startPoint": {
+        "lat": 26.5898,
+        "lon": -80.1003,
+        "label": "Lake Worth yard"
+      },
+      "stops": [],
+      "path": [
+        {
+          "lat": 26.5898,
+          "lon": -80.1003,
+          "label": "Lake Worth yard"
+        },
+        {
+          "lat": 26.5898,
+          "lon": -80.1003,
+          "label": "Lake Worth yard"
+        }
+      ],
+      "totalPools": 0,
+      "totalMiles": 0,
+      "driveMinutes": 0,
+      "serviceMinutes": 0,
+      "workdayMinutes": 0,
+      "fuelGallons": 0,
+      "efficiencyScore": 100,
+      "capacityUse": 0,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": -6.4
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
+    },
+    {
+      "id": "route-2026-03-09-emp-serena-cho",
+      "date": "2026-03-09",
+      "employeeId": "emp-serena-cho",
+      "employeeName": "Serena Cho",
+      "vehicleUnit": "Van 04",
+      "vehicleMpg": 16.2,
+      "startPoint": {
+        "lat": 26.4615,
+        "lon": -80.0728,
+        "label": "Delray staging"
+      },
+      "stops": [
+        {
+          "sequence": 1,
+          "poolId": "pool-harbor",
+          "customerName": "Harbor View",
+          "address": "889 Harbor View Dr, Delray Beach, FL",
+          "neighborhood": "Delray",
+          "priority": "high",
+          "serviceMinutes": 55,
+          "milesFromPrev": 1.1,
+          "driveMinutesFromPrev": 4,
+          "coordinates": {
+            "lat": 26.4744,
+            "lon": -80.0613
+          },
+          "workflowLabel": "",
+          "workflowStatus": "",
+          "workflowSourceName": "",
+          "workflowItems": [],
+          "customerScheduleRequested": true,
+          "customerRequestIds": [
+            "customer-request-2"
+          ],
+          "customerRequestTypes": [
+            "schedule"
+          ],
+          "customerRequestWindow": "afternoon",
+          "customerRequestSummary": "Move next visit later in the day",
+          "customerRequestStatus": "scheduled"
+        }
+      ],
+      "path": [
+        {
+          "lat": 26.4615,
+          "lon": -80.0728,
+          "label": "Delray staging"
+        },
+        {
+          "lat": 26.4744,
+          "lon": -80.0613
+        },
+        {
+          "lat": 26.4615,
+          "lon": -80.0728,
+          "label": "Delray staging"
+        }
+      ],
+      "totalPools": 1,
+      "totalMiles": 2.3,
+      "driveMinutes": 8,
+      "serviceMinutes": 55,
+      "workdayMinutes": 63,
+      "fuelGallons": 0.1,
+      "efficiencyScore": 96,
+      "capacityUse": 0.13,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": 11.1
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
+    },
+    {
+      "id": "route-2026-03-09-emp-owen-price",
+      "date": "2026-03-09",
+      "employeeId": "emp-owen-price",
+      "employeeName": "Owen Price",
+      "vehicleUnit": "Truck 21",
+      "vehicleMpg": 15.1,
+      "startPoint": {
+        "lat": 26.3696,
+        "lon": -80.1289,
+        "label": "Boca service pod"
+      },
+      "stops": [],
+      "path": [
+        {
+          "lat": 26.3696,
+          "lon": -80.1289,
+          "label": "Boca service pod"
+        },
+        {
+          "lat": 26.3696,
+          "lon": -80.1289,
+          "label": "Boca service pod"
+        }
+      ],
+      "totalPools": 0,
+      "totalMiles": 0,
+      "driveMinutes": 0,
+      "serviceMinutes": 0,
+      "workdayMinutes": 0,
+      "fuelGallons": 0,
+      "efficiencyScore": 100,
+      "capacityUse": 0,
+      "optimization": {
+        "objective": "least-fuel-and-time-loss",
+        "heuristic": "cheapest-insertion-plus-2opt",
+        "objectiveScore": -6.4
+      },
+      "provider": {
+        "provider": "mapbox",
+        "profile": "mapbox/driving-traffic",
+        "configured": false,
+        "mode": "heuristic-fallback",
+        "supportsTraffic": true,
+        "maxDirectionsWaypoints": 25,
+        "maxOptimizationWaypoints": 12
+      },
+      "routeMode": "heuristic-fallback"
+    }
+  ],
+  "liveTracking": {
+    "positions": [
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.121582457936487,
+        "lon": -80.6634661989922,
+        "accuracyFeet": 115,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:35:42.673Z",
+        "source": "watch"
+      }
+    ],
+    "history": [
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.121444408356023,
+        "lon": -80.6633831054963,
+        "accuracyFeet": 131,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:12:36.699Z",
+        "source": "watch"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.121444408356023,
+        "lon": -80.6633831054963,
+        "accuracyFeet": 131,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:12:51.733Z",
+        "source": "interval"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.121444408356023,
+        "lon": -80.6633831054963,
+        "accuracyFeet": 131,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:13:11.733Z",
+        "source": "interval"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.12146126443456,
+        "lon": -80.66321012084896,
+        "accuracyFeet": 131,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:13:26.585Z",
+        "source": "watch"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.121719497201376,
+        "lon": -80.66336297528817,
+        "accuracyFeet": 115,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:30:43.700Z",
+        "source": "watch"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.121714389760363,
+        "lon": -80.66338721981549,
+        "accuracyFeet": 115,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:33:45.994Z",
+        "source": "watch"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.121714389760363,
+        "lon": -80.66338721981549,
+        "accuracyFeet": 115,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:34:05.249Z",
+        "source": "interval"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.121714389760363,
+        "lon": -80.66338721981549,
+        "accuracyFeet": 115,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:34:17.203Z",
+        "source": "watch"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.121714389760363,
+        "lon": -80.66338721981549,
+        "accuracyFeet": 115,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:34:36.001Z",
+        "source": "interval"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.12154861670828,
+        "lon": -80.66328513056659,
+        "accuracyFeet": 115,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:34:56.002Z",
+        "source": "interval"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.12154861670828,
+        "lon": -80.66328513056659,
+        "accuracyFeet": 115,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:35:16.002Z",
+        "source": "interval"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.12154861670828,
+        "lon": -80.66328513056659,
+        "accuracyFeet": 115,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:35:36.004Z",
+        "source": "interval"
+      },
+      {
+        "employeeId": "emp-mia-rivera",
+        "lat": 28.121582457936487,
+        "lon": -80.6634661989922,
+        "accuracyFeet": 115,
+        "speedMph": null,
+        "heading": null,
+        "batteryLevel": null,
+        "recordedAt": "2026-03-07T23:35:42.673Z",
+        "source": "watch"
+      }
+    ]
+  },
+  "auth": {
+    "users": [
+      {
+        "id": "user-owner",
+        "name": "Avery Munoz",
+        "email": "owner@bluecurrent.local",
+        "role": "owner",
+        "employeeId": null,
+        "poolIds": [],
+        "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%230f766e%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230284c7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3EAM%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "passwordHash": "92446bc47d2cf94d25fdcc829afe9e6086e05a2663737e481125d61f1bb9e9832d1fc462e3781eedc8d33857d2789fc63e4a078e78f75230a861a7c84f47b9c5",
+        "passwordSalt": "db802b5a04ed2429b82575a75a192c79"
+      },
+      {
+        "id": "user-dispatch",
+        "name": "Jordan Ellis",
+        "email": "dispatch@bluecurrent.local",
+        "role": "dispatcher",
+        "employeeId": null,
+        "poolIds": [],
+        "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%230f766e%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230284c7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3EJE%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "passwordHash": "2eaa454d8365e8d561884529a33a916e2e2336bea2d23ff1dd0145296ea6972a9b54d3ffdd33d6665eb745e662b01b707dbe16f59f1b14a8d1230259d78a0189",
+        "passwordSalt": "ff71204fa973e1bd2c113e228fff1a5c"
+      },
+      {
+        "id": "user-mia",
+        "name": "Mia Rivera",
+        "email": "mia@bluecurrent.local",
+        "role": "technician",
+        "employeeId": "emp-mia-rivera",
+        "poolIds": [],
+        "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%230ea5a0%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%233b82f6%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3EMR%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "passwordHash": "49afabbfc5cbf09e5423ef938b2398abf2ccee9caf1ead3490353bcc72981e74be44a8cefc858d4a2191047185919bce73b1f3f1ed3290f79cf3bbfb95f69f31",
+        "passwordSalt": "7e5851671db7d37b0c55debeb923d1ee"
+      },
+      {
+        "id": "user-darius",
+        "name": "Darius Hall",
+        "email": "darius@bluecurrent.local",
+        "role": "technician",
+        "employeeId": "emp-darius-hall",
+        "poolIds": [],
+        "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%232563eb%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230ea5a0%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3EDH%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "passwordHash": "0ae79ab18909debd2372a143cb95023ffb639c2badb850b8d1266a9f3027ced659a539d06e70b5fa36555dd2d193fb428d21192a7577a3b7393ee76efaea97de",
+        "passwordSalt": "15ae76003618aab000f9ccbb86553fbf"
+      },
+      {
+        "id": "user-serena",
+        "name": "Serena Cho",
+        "email": "serena@bluecurrent.local",
+        "role": "technician",
+        "employeeId": "emp-serena-cho",
+        "poolIds": [],
+        "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%238b5cf6%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230ea5a0%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3ESC%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "passwordHash": "c8ea664f7d4cb3685d8afa5180f969f938cbaeb45318cfee8016d1f193d2ddb1ab355552844803f779486857d4008343ab191b052805347d428f9a10bd515256",
+        "passwordSalt": "ad5b18da023294595a2e552547fded57"
+      },
+      {
+        "id": "user-owen",
+        "name": "Owen Price",
+        "email": "owen@bluecurrent.local",
+        "role": "technician",
+        "employeeId": "emp-owen-price",
+        "poolIds": [],
+        "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f59e0b%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230ea5a0%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3EOP%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "passwordHash": "d6c7931e0792359a4331b567b7664c864e79f2dcdedcbc680288ae497cbef26037e1f993dbe45d551c7d77075df097f1d362c5400bae1c24f7dfcee3dddeff4a",
+        "passwordSalt": "9abaddaa3e48d114e0070a8d6ba22426"
+      },
+      {
+        "id": "user-customer-alton",
+        "name": "Lena Alton",
+        "email": "lena@alton.local",
+        "role": "customer",
+        "employeeId": null,
+        "poolIds": [
+          "pool-alton"
+        ],
+        "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%230f766e%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230284c7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3ELA%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "passwordHash": "5e297cb490b0b9642938a472b2e2e3f04c424fc0a187cec628dd4628ae9df37c0246c541586fb16ede4ffbb50c7eb32ec9b58ff331365c9d2d1265aaaa6a1569",
+        "passwordSalt": "0cc4b0e25ee73beb016cb8d38b890820"
+      },
+      {
+        "id": "user-customer-harbor",
+        "name": "Harbor View HOA",
+        "email": "hoa@harborview.local",
+        "role": "customer",
+        "employeeId": null,
+        "poolIds": [
+          "pool-harbor"
+        ],
+        "avatarUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%25%22%20x2%3D%22100%25%22%20y1%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%230f766e%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230284c7%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2254%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2292%22%20r%3D%2242%22%20fill%3D%22rgba(255%2C255%2C255%2C.16)%22%2F%3E%3Cpath%20d%3D%22M54%20196c13-31%2039-47%2066-47s54%2016%2066%2047%22%20fill%3D%22rgba(255%2C255%2C255%2C.14)%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22132%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2254%22%20font-weight%3D%22700%22%20fill%3D%22%23f4fffd%22%3EHV%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "passwordHash": "7a32dc29d31676073682705a45b1ecb9e1b6edd1c2d9629169c04dea134c76ef5606342a7781a85b475b8102e8aff13ced1a0fba1f5231c5ff90416d304ae8ac",
+        "passwordSalt": "3d9a28917a6a8966cadd1ddc83fc69ea"
+      }
+    ],
+    "sessions": [
+      {
+        "id": "1737cde8-0a73-4c1e-a07b-04a3643520ca",
+        "userId": "user-mia",
+        "tokenHash": "e4c84842ca4a3a7c1ea40eb1a5d187d51634a561abbd351bee8b0fe4262d7191",
+        "createdAt": "2026-03-07T21:59:16.474Z",
+        "expiresAt": "2026-03-21T21:59:16.474Z"
+      },
+      {
+        "id": "0e58a6d3-93fc-44fd-b1a0-5e8c50caaa6a",
+        "userId": "user-owner",
+        "tokenHash": "3c47a676655164e07a3c8c258ee12a34956df0086eb7f61fcfc36a71ccfa0b3f",
+        "createdAt": "2026-03-07T21:59:17.077Z",
+        "expiresAt": "2026-03-21T21:59:17.077Z"
+      },
+      {
+        "id": "86ebb4c7-e411-40d5-8d9c-a4d18602309f",
+        "userId": "user-owner",
+        "tokenHash": "2561fa69e7c6899f3d9a30dbfb5d7481a27ddeab7999e109eea6c96691983be3",
+        "createdAt": "2026-03-07T21:59:47.296Z",
+        "expiresAt": "2026-03-21T21:59:47.296Z"
+      },
+      {
+        "id": "8147421c-f623-408f-9f13-f55aef5a201e",
+        "userId": "user-mia",
+        "tokenHash": "bd4e53646ccf661ff8ee53a6b0ac65a0be530214c9045840a1ab7d6a8cecea83",
+        "createdAt": "2026-03-07T21:59:47.861Z",
+        "expiresAt": "2026-03-21T21:59:47.861Z"
+      },
+      {
+        "id": "35f1719a-fb36-4163-9ec6-0af43edc29eb",
+        "userId": "user-owner",
+        "tokenHash": "802ab4da1c70d7ec8ad73dc55f58c412005df939a43cae1dcdb5e4e568e2b1db",
+        "createdAt": "2026-03-07T21:59:58.030Z",
+        "expiresAt": "2026-03-21T21:59:58.030Z"
+      },
+      {
+        "id": "a93d296c-92c4-4ae7-84b1-87cfbcb756b3",
+        "userId": "user-owner",
+        "tokenHash": "20c9042a2d0634ca62998f1020786021b8aec0436c16ac636ef8b63f8222c1f4",
+        "createdAt": "2026-03-07T22:01:24.991Z",
+        "expiresAt": "2026-03-21T22:01:24.991Z"
+      },
+      {
+        "id": "5ce898d0-40f5-4797-9c13-444c19a41358",
+        "userId": "user-owner",
+        "tokenHash": "18edde99923116416b7888588372451cd9e60c52774aff997a46a396e1cac2b4",
+        "createdAt": "2026-03-07T22:01:25.597Z",
+        "expiresAt": "2026-03-21T22:01:25.597Z"
+      },
+      {
+        "id": "a55a2d8f-cb97-450e-8d35-c67a47c78aa5",
+        "userId": "user-mia",
+        "tokenHash": "8d60e5a41de601dd77896f384d8cd228ea4586eaad9ff91b728673afe2bd9dbd",
+        "createdAt": "2026-03-07T22:01:26.205Z",
+        "expiresAt": "2026-03-21T22:01:26.205Z"
+      },
+      {
+        "id": "4c7170ba-e272-4b40-a3d4-a598b7c5b84f",
+        "userId": "user-owner",
+        "tokenHash": "327e749388cebe2547cf855a3637da6be65499f233f65da1c7c998c6a27294a7",
+        "createdAt": "2026-03-07T22:05:46.096Z",
+        "expiresAt": "2026-03-21T22:05:46.096Z"
+      },
+      {
+        "id": "acda8bd5-8eef-476e-98af-bcd9161026b8",
+        "userId": "user-mia",
+        "tokenHash": "4a310611a8e9d0a0c4fe3e27e6bb70c0a027211bac4e2123aaad9682de7c1c38",
+        "createdAt": "2026-03-07T22:16:26.215Z",
+        "expiresAt": "2026-03-21T22:16:26.215Z"
+      },
+      {
+        "id": "134ca6b4-e489-419b-b17d-c77de3cfd085",
+        "userId": "user-owner",
+        "tokenHash": "5ba548c033f2ddbce3cbf22c3ae56a136f160f5a9ec3ea490f10b276c6f22615",
+        "createdAt": "2026-03-07T22:16:26.776Z",
+        "expiresAt": "2026-03-21T22:16:26.776Z"
+      },
+      {
+        "id": "5f73a30d-592d-4b1e-a980-5ec0484773ca",
+        "userId": "user-mia",
+        "tokenHash": "79bd621ae5be459734b4c5f50e5b9f4bcc5e099113354f28d740d1b5bccd97fc",
+        "createdAt": "2026-03-07T22:18:02.970Z",
+        "expiresAt": "2026-03-21T22:18:02.970Z"
+      },
+      {
+        "id": "c9e506d0-5f94-4ac3-b925-017aae4b5e57",
+        "userId": "user-owner",
+        "tokenHash": "8f23a0c0f00aa08ad0177a56a019e90d31a0104dca29260426f348c8ead5621e",
+        "createdAt": "2026-03-07T22:23:46.274Z",
+        "expiresAt": "2026-03-21T22:23:46.274Z"
+      },
+      {
+        "id": "670acd81-9ac9-4688-a465-8f542d017d0e",
+        "userId": "user-owner",
+        "tokenHash": "af201a820c1f878c6bdbb552183f756b16578e938e85ad6a89ca84851eeb2c90",
+        "createdAt": "2026-03-07T22:45:14.180Z",
+        "expiresAt": "2026-03-21T22:45:14.180Z"
+      },
+      {
+        "id": "14c35b4f-69a1-45cf-ae98-074794a22cd0",
+        "userId": "user-owner",
+        "tokenHash": "3a447968691ea0d705f739c0d0e25af6a8b19804204643e26f51b370ba7157a4",
+        "createdAt": "2026-03-07T22:50:44.521Z",
+        "expiresAt": "2026-03-21T22:50:44.521Z"
+      },
+      {
+        "id": "fc370cf0-ddf6-47c2-8a88-8aa75049818f",
+        "userId": "user-mia",
+        "tokenHash": "686e8101af134faee515ad76457db449509ba056e5e25b50b8e8958cc1720148",
+        "createdAt": "2026-03-07T22:57:10.023Z",
+        "expiresAt": "2026-03-21T22:57:10.023Z"
+      },
+      {
+        "id": "9aa21612-2600-4084-b1f0-15dc3db68c80",
+        "userId": "user-owner",
+        "tokenHash": "b9c522395d49e935b88f7295d605b28388ef01ede7935d0b4e6230ee0252e6f6",
+        "createdAt": "2026-03-07T22:57:10.580Z",
+        "expiresAt": "2026-03-21T22:57:10.580Z"
+      },
+      {
+        "id": "1f270d8a-48e1-49cf-b040-f0c8e3fdd41b",
+        "userId": "user-mia",
+        "tokenHash": "1eab844658d94333b06da9879ccadfcf97f0b8c32f9fc944ccd4f708154c8d39",
+        "createdAt": "2026-03-07T22:57:21.620Z",
+        "expiresAt": "2026-03-21T22:57:21.620Z"
+      },
+      {
+        "id": "cda39354-a1e7-4417-aea5-424223921ce0",
+        "userId": "user-owner",
+        "tokenHash": "3ce743626feda62309d322245a32dee216df4f248cff301a827d8ea6af01f192",
+        "createdAt": "2026-03-07T22:58:11.707Z",
+        "expiresAt": "2026-03-21T22:58:11.707Z"
+      },
+      {
+        "id": "dcd80b28-1f5e-434d-8a76-88d516e029d2",
+        "userId": "user-owner",
+        "tokenHash": "250fdbfabd581b99bad0d06f8f77d20ff84e2a419d2dc03bfe45447fcbad72c7",
+        "createdAt": "2026-03-07T23:35:58.033Z",
+        "expiresAt": "2026-03-21T23:35:58.033Z"
+      },
+      {
+        "id": "6acd0320-2ca8-47dd-ac9d-613f77e65ab6",
+        "userId": "user-owner",
+        "tokenHash": "e7511c7243b6aff2bf53450e3fcfbb73b03a8267d2eb118349f7dcf9a70c1e64",
+        "createdAt": "2026-03-07T23:44:02.605Z",
+        "expiresAt": "2026-03-21T23:44:02.605Z"
+      },
+      {
+        "id": "1a15bbaa-cf67-45af-b327-1861664df08b",
+        "userId": "user-customer-alton",
+        "tokenHash": "9f9464978910b2661b1a5136cb854f056532d82602af12fd13fb852f620b39fd",
+        "createdAt": "2026-03-07T23:46:23.557Z",
+        "expiresAt": "2026-03-21T23:46:23.557Z"
+      },
+      {
+        "id": "77f5301b-e73e-4e3a-9dbc-d386c4ff5763",
+        "userId": "user-owner",
+        "tokenHash": "e9ba2e731477908dc1f5366a4022664413801c3a76317155df12132970d309d8",
+        "createdAt": "2026-03-07T23:46:44.629Z",
+        "expiresAt": "2026-03-21T23:46:44.629Z"
+      },
+      {
+        "id": "0c129e5b-b8dd-43fa-a404-580a20aefcd0",
+        "userId": "user-owner",
+        "tokenHash": "72b266f3aa96783fa32aa4912af4b56e8de10f1e6437b485f33594abc12fc9f8",
+        "createdAt": "2026-03-07T23:49:29.086Z",
+        "expiresAt": "2026-03-21T23:49:29.086Z"
+      },
+      {
+        "id": "3af46cb4-3990-4a4a-93d5-197baa05b9a0",
+        "userId": "user-owner",
+        "tokenHash": "590074ed5bac1b2a664291b007efc126c6f4182378291133483b3bc3720cf64c",
+        "createdAt": "2026-03-07T23:49:29.823Z",
+        "expiresAt": "2026-03-21T23:49:29.823Z"
+      },
+      {
+        "id": "e49a9098-75fb-4977-9824-fe9a3f4b7650",
+        "userId": "user-owner",
+        "tokenHash": "9b294d485ddfdfb48429deab4b192ba52f5c8a0cf8e32582d9dd0ff19936f9b0",
+        "createdAt": "2026-03-07T23:50:21.200Z",
+        "expiresAt": "2026-03-21T23:50:21.200Z"
+      },
+      {
+        "id": "12056947-8b92-4722-b03d-0a55689a873c",
+        "userId": "user-owner",
+        "tokenHash": "b8e1ce9bedcc9bcfbaf666961d81934e281ae900d7b643b36e1bf2fa2978795a",
+        "createdAt": "2026-03-07T23:50:21.933Z",
+        "expiresAt": "2026-03-21T23:50:21.933Z"
+      },
+      {
+        "id": "d0163b36-8f94-4162-a7ef-744fe24ac6fc",
+        "userId": "user-owner",
+        "tokenHash": "ff931f3e528dabfe939ffe69ef42e6f3c1772fb815a9629a3e675d556a3380b3",
+        "createdAt": "2026-03-07T23:51:00.400Z",
+        "expiresAt": "2026-03-21T23:51:00.400Z"
+      },
+      {
+        "id": "4403523c-3f2d-4890-8b05-a19603e4a06f",
+        "userId": "user-owner",
+        "tokenHash": "850f017d7d38be5faaa17d80e8f7df9e1bf7a7e18420b83f04100407123b50ef",
+        "createdAt": "2026-03-07T23:51:01.143Z",
+        "expiresAt": "2026-03-21T23:51:01.143Z"
+      }
+    ],
+    "oauthStates": []
+  },
+  "integrations": {
+    "routing": {
+      "provider": "mapbox",
+      "profile": "mapbox/driving-traffic",
+      "configured": false,
+      "lastPlannedAt": "2026-03-07T23:51:01.867Z"
+    },
+    "quickbooks": {
+      "environment": "sandbox",
+      "connected": false,
+      "realmId": "",
+      "accessToken": "",
+      "refreshToken": "",
+      "expiresAt": "",
+      "refreshExpiresAt": "",
+      "companyName": "",
+      "companyLegalName": "",
+      "connectedByUserId": "",
+      "lastSyncAt": ""
+    },
+    "workflow": {
+      "sourceType": "json-url",
+      "sourceName": "Demo Workflow Feed",
+      "connectionString": "",
+      "feedUrl": "http://localhost:8794/workflow-demo.json",
+      "sqlQuery": "",
+      "connected": true,
+      "lastSyncAt": "2026-03-07T22:45:39.130Z",
+      "lastSyncCount": 2,
+      "lastError": ""
+    }
+  }
+}

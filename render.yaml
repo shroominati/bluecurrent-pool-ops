@@ -1,0 +1,29 @@
+databases:
+  - name: reveal-market-db
+    databaseName: reveal_market
+    user: reveal_market
+    plan: free
+
+services:
+  - type: web
+    name: reveal-market-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run app:start
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DATABASE_URL
+        fromDatabase:
+          name: reveal-market-db
+          property: connectionString
+      - key: ADMIN_KEY
+        generateValue: true
+      - key: REQUIRE_VERIFIED_CREATOR
+        value: "true"
+      - key: ESCROW_WALLET
+        sync: false
+      - key: RPC_URL
+        value: https://api.devnet.solana.com
