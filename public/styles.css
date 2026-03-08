@@ -776,52 +776,148 @@ h3 {
   min-width: 0;
 }
 
-.employee-selector-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 0.85rem;
+.team-workspace-shell {
+  padding: 1.2rem;
 }
 
-.team-focus-grid {
+.team-workspace-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-  gap: 0.9rem;
+  grid-template-columns: minmax(250px, 290px) minmax(0, 1fr);
+  gap: 1rem;
   margin-top: 1rem;
+  align-items: start;
 }
 
-.inset-panel {
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.52);
+.team-sidebar,
+.team-map-stage,
+.team-detail-stage,
+.employee-summary-card {
+  border: 1px solid rgba(56, 189, 248, 0.12);
+  background: rgba(255, 255, 255, 0.62);
+  border-radius: 24px;
 }
 
-.compact-map-shell,
-.compact-map-shell .leaflet-ops-map {
-  min-height: 24rem;
+.team-sidebar {
+  padding: 0.95rem;
+  position: sticky;
+  top: 0.8rem;
 }
 
-.employee-selector-card {
+.team-sidebar-head {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  gap: 0.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.employee-selector-rail {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.employee-rail-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 0.75rem;
   width: 100%;
   text-align: left;
-  padding: 0.85rem 0.95rem;
-  border-radius: 20px;
-  border: 1px solid rgba(56, 189, 248, 0.14);
-  background: rgba(255, 255, 255, 0.78);
+  padding: 0.8rem 0.85rem;
+  border-radius: 18px;
+  border: 1px solid rgba(56, 189, 248, 0.12);
+  background: rgba(247, 252, 255, 0.88);
   color: var(--text);
   cursor: pointer;
 }
 
-.employee-selector-card.is-active {
-  border-color: color-mix(in srgb, var(--route-color, var(--sea)) 48%, rgba(56, 189, 248, 0.22));
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--route-color, var(--sea)) 16%, transparent);
+.employee-rail-card.is-active {
+  border-color: color-mix(in srgb, var(--route-color, var(--sea)) 52%, rgba(56, 189, 248, 0.24));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(224, 244, 255, 0.95));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--route-color, var(--sea)) 18%, transparent);
 }
 
-.employee-selector-card .profile-avatar {
-  width: 3rem;
-  height: 3rem;
+.employee-rail-avatar {
+  width: 2.85rem;
+  height: 2.85rem;
+}
+
+.employee-rail-copy {
+  min-width: 0;
+}
+
+.employee-rail-progress,
+.employee-rail-mileage {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.employee-rail-metrics {
+  display: grid;
+  justify-items: end;
+  gap: 0.25rem;
+}
+
+.team-main-workspace {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.employee-summary-card {
+  padding: 1rem 1.05rem;
+}
+
+.employee-summary-shell {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.employee-summary-main {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.employee-summary-avatar {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 20px;
+}
+
+.employee-summary-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.employee-summary-stats > div,
+.employee-detail-grid > div {
+  display: grid;
+  gap: 0.3rem;
+  align-content: start;
+}
+
+.employee-summary-stats > div {
+  padding: 0.75rem 0.8rem;
+  border-radius: 18px;
+  background: rgba(238, 248, 255, 0.95);
+}
+
+.team-stage-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.98fr);
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.team-map-stage,
+.team-detail-stage {
+  padding: 1rem;
+}
+
+.compact-map-shell,
+.compact-map-shell .leaflet-ops-map {
+  min-height: 23rem;
 }
 
 .integration-panel {
@@ -832,7 +928,7 @@ h3 {
   display: flex;
   gap: 0.6rem;
   flex-wrap: wrap;
-  margin-top: 1rem;
+  margin: 0 0 0.85rem;
 }
 
 .tab-btn {
@@ -852,14 +948,22 @@ h3 {
 }
 
 .employee-panel {
-  margin-top: 0.6rem;
+  margin-top: 0;
 }
 
 .employee-panel-card {
-  padding: 1rem;
-  border-radius: 24px;
-  border: 1px solid rgba(56, 189, 248, 0.14);
-  background: rgba(255, 255, 255, 0.76);
+  padding: 0;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+}
+
+.employee-content-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
 }
 
 .employee-panel-hero {
@@ -880,7 +984,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.75rem;
-  margin: 0.9rem 0;
+  margin: 0 0 0.9rem;
 }
 
 .employee-detail-grid > div {
@@ -889,17 +993,32 @@ h3 {
   background: rgba(232, 246, 255, 0.9);
 }
 
-.compact-stack {
-  margin-top: 0.85rem;
-}
-
 .compact-card {
   padding: 0.8rem;
 }
 
+.employee-list-shell {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.employee-stop-card {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.employee-note-card {
+  margin-bottom: 0.9rem;
+  padding: 0.9rem 1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  color: var(--text);
+}
+
 .profile-card:hover,
 .route-card:hover,
-.fleet-spotlight-card:hover {
+.fleet-spotlight-card:hover,
+.employee-rail-card:hover {
   transform: translateY(-1px);
 }
 
@@ -1141,11 +1260,21 @@ select:focus {
   .dashboard-grid,
   .dispatch-summary-grid,
   .portal-grid,
-  .team-focus-grid {
+  .team-workspace-grid,
+  .team-stage-grid {
     grid-template-columns: 1fr;
   }
 
   .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team-sidebar {
+    position: static;
+  }
+
+  .employee-summary-stats,
+  .employee-detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1178,13 +1307,24 @@ select:focus {
   .kpi-grid,
   .metric-grid,
   .feed-photo-row,
-  .photo-preview {
+  .photo-preview,
+  .employee-summary-stats,
+  .employee-detail-grid {
     grid-template-columns: 1fr;
   }
 
   .leaflet-ops-map,
   .ops-map-shell {
     min-height: 24rem;
+  }
+
+  .employee-summary-main,
+  .employee-rail-card {
+    grid-template-columns: 1fr;
+  }
+
+  .employee-rail-metrics {
+    justify-items: start;
   }
 
   .viewer-chip {

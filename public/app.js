@@ -79,6 +79,7 @@ const refs = {
   routeBoard: document.getElementById("routeBoard"),
   visitFeed: document.getElementById("visitFeed"),
   employeeBoard: document.getElementById("employeeBoard"),
+  employeeSummary: document.getElementById("employeeSummary"),
   employeeTabs: document.getElementById("employeeTabs"),
   employeePanel: document.getElementById("employeePanel"),
   payrollBoard: document.getElementById("payrollBoard"),
@@ -1281,19 +1282,82 @@ function renderEmployeeBoard() {
   refs.employeeBoard.innerHTML = employees
     .map(
       (employee) => `
-        <button class="employee-selector-card ${state.activeMapEmployeeId === employee.id ? "is-active" : ""}" type="button" data-employee-id="${escapeHtml(
+        <button class="employee-rail-card ${state.activeMapEmployeeId === employee.id ? "is-active" : ""}" type="button" data-employee-id="${escapeHtml(
           employee.id,
         )}" style="--route-color:${routeColorForEmployee(employee.id)}">
-          <img class="profile-avatar" src="${employee.avatarUrl}" alt="${escapeHtml(employee.name)}" />
-          <div>
+          <img class="profile-avatar employee-rail-avatar" src="${employee.avatarUrl}" alt="${escapeHtml(employee.name)}" />
+          <div class="employee-rail-copy">
             <strong>${escapeHtml(employee.name)}</strong>
             <p class="meta-copy">${escapeHtml(employee.role)}</p>
+            <p class="employee-rail-progress">${employee.planSummary?.completedPools || 0}/${employee.planSummary?.totalPools || 0} done</p>
           </div>
-          <span class="tag">${employee.planSummary?.totalPools || 0} stops</span>
+          <div class="employee-rail-metrics">
+            <span class="tag">${employee.planSummary?.totalPools || 0} stops</span>
+            <span class="employee-rail-mileage">${employee.planSummary?.routeMiles || 0} mi</span>
+          </div>
         </button>
       `,
     )
     .join("");
+}
+
+function renderEmployeeSummary() {
+  if (!refs.employeeSummary) {
+    return;
+  }
+
+  const employee = (state.overview?.employees || []).find((item) => item.id === state.activeMapEmployeeId) || null;
+  if (!employee) {
+    refs.employeeSummary.innerHTML = "<article class='muted-card'>Select an employee to load the workspace.</article>";
+    return;
+  }
+
+  const plan = (state.overview?.routePlans || []).find((item) => item.employeeId === employee.id) || null;
+  const payroll = state.overview?.payrollHub?.employees?.find((item) => item.id === employee.id) || null;
+  const salesSummary = state.overview?.salesHub?.leaderboard?.find((item) => item.employeeId === employee.id) || null;
+  const latestPing = latestEmployeeFieldPosition(employee.id);
+
+  refs.employeeSummary.innerHTML = `
+    <article class="employee-summary-shell">
+      <div class="employee-summary-main">
+        <img class="employee-summary-avatar" src="${employee.avatarUrl}" alt="${escapeHtml(employee.name)}" />
+        <div>
+          <p class="mini-label">Selected employee</p>
+          <h3>${escapeHtml(employee.name)}</h3>
+          <p class="meta-copy">${escapeHtml(employee.role)} • ${escapeHtml(employee.email)}</p>
+        </div>
+      </div>
+      <div class="employee-summary-stats">
+        <div>
+          <label>Live status</label>
+          <strong>${latestPing ? "Tracking live" : "Awaiting ping"}</strong>
+        </div>
+        <div>
+          <label>Route</label>
+          <strong>${plan ? `${plan.totalPools} stops` : "Unassigned"}</strong>
+        </div>
+        <div>
+          <label>Today</label>
+          <strong>${employee.todayVisits.length} visits</strong>
+        </div>
+        <div>
+          <label>Projected pay</label>
+          <strong>${formatMoney(payroll?.projectedGrossWithSales || payroll?.projectedGross || 0)}</strong>
+        </div>
+        <div>
+          <label>Sales</label>
+          <strong>${salesSummary?.submittedCount || 0} leads</strong>
+        </div>
+        <div>
+          <label>Last ping</label>
+          <strong>${latestPing ? escapeHtml(formatDateTime(latestPing.recordedAt)) : "No signal"}</strong>
+        </div>
+      </div>
+      <div class="pill-row">
+        ${(employee.specialties?.length ? employee.specialties : ["pool service"]).map((item) => `<span class="pill">${escapeHtml(item)}</span>`).join("")}
+      </div>
+    </article>
+  `;
 }
 
 function renderEmployeeTabs() {
@@ -1331,9 +1395,10 @@ function renderEmployeePanel() {
     refs.employeePanel.innerHTML = plan
       ? `
           <article class="employee-panel-card">
-            <div class="list-top">
+            <div class="employee-content-head">
               <div>
-                <h3>${escapeHtml(employee.name)} route</h3>
+                <p class="mini-label">Route</p>
+                <h3>Daily route plan</h3>
                 <p class="meta-copy">${plan.totalPools} stops • ${plan.totalMiles} mi • ${plan.fuelGallons} gal</p>
               </div>
               <span class="tag">${escapeHtml(plan.routeMode)}</span>
@@ -1344,17 +1409,21 @@ function renderEmployeePanel() {
               <div><label>Live pings</label><strong>${heartbeatTrailForEmployee(employee.id).length}</strong></div>
               <div><label>Workflow</label><strong>${workflowItemsForEmployee(employee.id).length}</strong></div>
             </div>
-            <div class="stack-list compact-stack">
+            <div class="employee-list-shell">
               ${plan.stops
                 .map(
                   (stop) => `
-                    <article class="list-card compact-card">
+                    <article class="list-card compact-card employee-stop-card">
                       <div class="list-top">
                         <h3>${stop.sequence}. ${escapeHtml(stop.customerName)}</h3>
                         <span class="tag">${stop.serviceMinutes} min</span>
                       </div>
                       <p class="meta-copy">${escapeHtml(stop.address)}</p>
-                      <p class="meta-copy">${stop.milesFromPrev} mi • ${stop.driveMinutesFromPrev} min drive</p>
+                      <div class="pill-row compact-pill-row">
+                        <span class="pill">${stop.milesFromPrev} mi</span>
+                        <span class="pill">${stop.driveMinutesFromPrev} min drive</span>
+                        ${weatherBadge(stop.coordinates.lat, stop.coordinates.lon)}
+                      </div>
                     </article>
                   `,
                 )
@@ -1370,9 +1439,10 @@ function renderEmployeePanel() {
     refs.employeePanel.innerHTML = payroll
       ? `
           <article class="employee-panel-card">
-            <div class="list-top">
+            <div class="employee-content-head">
               <div>
-                <h3>${escapeHtml(employee.name)} pay view</h3>
+                <p class="mini-label">Pay</p>
+                <h3>Compensation snapshot</h3>
                 <p class="meta-copy">${escapeHtml(payroll.payType)} • Next pay ${escapeHtml(payroll.nextPayDate)}</p>
               </div>
               <span class="tag">${formatMoney(payroll.hourlyRate)}/hr</span>
@@ -1404,9 +1474,10 @@ function renderEmployeePanel() {
   if (state.activeEmployeeTab === "sales") {
     refs.employeePanel.innerHTML = `
       <article class="employee-panel-card">
-        <div class="list-top">
+        <div class="employee-content-head">
           <div>
-            <h3>${escapeHtml(employee.name)} sales activity</h3>
+            <p class="mini-label">Sales</p>
+            <h3>Upsell and referral activity</h3>
             <p class="meta-copy">${salesSummary ? `${salesSummary.submittedCount} submitted • ${salesSummary.wonCount} won` : "No sales activity yet."}</p>
           </div>
           <span class="tag">${formatMoney(salesSummary?.projectedBonus || 0)} bonus</span>
@@ -1417,7 +1488,7 @@ function renderEmployeePanel() {
           <div><label>Submitted</label><strong>${salesSummary?.submittedCount || 0}</strong></div>
           <div><label>Won</label><strong>${salesSummary?.wonCount || 0}</strong></div>
         </div>
-        <div class="stack-list compact-stack">
+        <div class="employee-list-shell">
           ${
             salesLeads.length
               ? salesLeads
@@ -1443,13 +1514,13 @@ function renderEmployeePanel() {
 
   refs.employeePanel.innerHTML = `
     <article class="employee-panel-card">
-      <div class="employee-panel-hero">
-        <img class="employee-panel-avatar" src="${employee.avatarUrl}" alt="${escapeHtml(employee.name)}" />
+      <div class="employee-content-head">
         <div>
-          <h3>${escapeHtml(employee.name)}</h3>
+          <p class="mini-label">Overview</p>
+          <h3>Field profile</h3>
           <p class="meta-copy">${escapeHtml(employee.role)} • ${escapeHtml(employee.email)}</p>
-          <p>${escapeHtml(employee.profileNote || "")}</p>
         </div>
+        <span class="tag">${formatPercent(employee.planSummary?.balancedChlorineRate || 0)} balanced</span>
       </div>
       <div class="employee-detail-grid">
         <div><label>Phone</label><strong>${escapeHtml(employee.phone)}</strong></div>
@@ -1457,6 +1528,7 @@ function renderEmployeePanel() {
         <div><label>Workflow jobs</label><strong>${workflowItemsForEmployee(employee.id).length}</strong></div>
         <div><label>Avg cost/job</label><strong>${formatMoney(employee.planSummary?.averageCostPerJob || 0)}</strong></div>
       </div>
+      <article class="employee-note-card">${escapeHtml(employee.profileNote || "No profile note yet.")}</article>
       <div class="pill-row">
         ${(employee.specialties || []).map((item) => `<span class="pill">${escapeHtml(item)}</span>`).join("")}
       </div>
@@ -2039,6 +2111,7 @@ function renderOverview() {
   renderFleetMap();
   renderFocusedRouteMap();
   renderEmployeeTrackingMap();
+  renderEmployeeSummary();
   renderRouteBoard();
   renderVisitFeed();
   renderEmployeeBoard();
@@ -2306,6 +2379,7 @@ refs.routeBoard.addEventListener("click", (event) => {
   renderFleetMap();
   renderFocusedRouteMap();
   renderEmployeeTrackingMap();
+  renderEmployeeSummary();
   renderRouteBoard();
   renderEmployeeBoard();
   renderEmployeeTabs();
@@ -2331,6 +2405,7 @@ refs.employeeBoard.addEventListener("click", (event) => {
   renderFleetMap();
   renderFocusedRouteMap();
   renderEmployeeTrackingMap();
+  renderEmployeeSummary();
   renderRouteBoard();
   renderEmployeeBoard();
   renderEmployeeTabs();
@@ -2356,6 +2431,7 @@ refs.fleetSpotlight.addEventListener("click", (event) => {
   renderFleetMap();
   renderFocusedRouteMap();
   renderEmployeeTrackingMap();
+  renderEmployeeSummary();
   renderRouteBoard();
   renderEmployeeBoard();
   renderEmployeeTabs();
@@ -2568,6 +2644,7 @@ refs.employeeSelect.addEventListener("change", (event) => {
   renderFleetMap();
   renderFocusedRouteMap();
   renderEmployeeTrackingMap();
+  renderEmployeeSummary();
   renderRouteBoard();
   renderEmployeeBoard();
   renderEmployeeTabs();

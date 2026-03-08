@@ -253,34 +253,40 @@
 
         <div class="workspace-panel-stack hidden" data-workspace-panel="team">
         <section class="dashboard-grid">
-          <article class="panel wide-panel">
+          <article class="panel wide-panel team-workspace-shell">
             <div class="section-top">
               <div>
                 <p class="mini-label">Employee center</p>
-                <h2>Team hub</h2>
+                <h2>Selected employee workspace</h2>
               </div>
+              <p class="section-copy">Choose one technician, then work from their live map, route, pay, and sales tabs without the rest of the team cluttering the screen.</p>
             </div>
-            <div id="employeeBoard" class="employee-selector-grid"></div>
-            <div class="team-focus-grid">
-              <article class="panel inset-panel">
-                <div class="section-top">
-                  <div>
-                    <p class="mini-label">Employee tracking</p>
-                    <h2>Selected employee map</h2>
-                  </div>
+            <div class="team-workspace-grid">
+              <aside class="team-sidebar">
+                <div class="team-sidebar-head">
+                  <p class="mini-label">Roster</p>
+                  <h3>Choose employee</h3>
                 </div>
-                <div id="employeeTrackingMap" class="ops-map-shell compact-map-shell"></div>
-              </article>
-              <article class="panel inset-panel">
-                <div class="section-top">
-                  <div>
-                    <p class="mini-label">Employee details</p>
-                    <h2>Selected employee hub</h2>
-                  </div>
+                <div id="employeeBoard" class="employee-selector-rail"></div>
+              </aside>
+              <section class="team-main-workspace">
+                <div id="employeeSummary" class="employee-summary-card"></div>
+                <div class="team-stage-grid">
+                  <article class="team-map-stage">
+                    <div class="section-top">
+                      <div>
+                        <p class="mini-label">Live tracking</p>
+                        <h3>Employee map</h3>
+                      </div>
+                    </div>
+                    <div id="employeeTrackingMap" class="ops-map-shell compact-map-shell"></div>
+                  </article>
+                  <article class="team-detail-stage">
+                    <div id="employeeTabs" class="tab-row"></div>
+                    <div id="employeePanel" class="employee-panel"></div>
+                  </article>
                 </div>
-                <div id="employeeTabs" class="tab-row"></div>
-                <div id="employeePanel" class="employee-panel"></div>
-              </article>
+              </section>
             </div>
           </article>
         </section>
