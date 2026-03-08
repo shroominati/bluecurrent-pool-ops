@@ -4,6 +4,7 @@ Node/Express app for pool service companies that need dispatch planning, technic
 
 This version includes:
 - role-based login for owners, dispatchers, and technicians
+- customer portal for service requests, complaints, photo uploads, and referrals
 - route optimization with live road-network routing when Mapbox is configured
 - technician portal for visit logging, chemistry, notes, photos, and GPS capture
 - employee profiles with avatars, certifications, emergency contacts, and payroll summaries
@@ -31,6 +32,33 @@ PORT=8791 npm run app:start
 - Owner: `owner@bluecurrent.local` / `owner123!`
 - Dispatcher: `dispatch@bluecurrent.local` / `dispatch123!`
 - Technician: `mia@bluecurrent.local` / `tech123!`
+- Technician: `serena@bluecurrent.local` / `tech123!`
+- Customer: `lena@alton.local` / `customer123!`
+- Customer: `hoa@harborview.local` / `customer123!`
+
+## Deploy to Render
+
+The repo now includes a Render Blueprint at `render.yaml`.
+
+Use the easiest deployment path:
+
+1. Push this repo to GitHub.
+2. In Render, click `New` -> `Blueprint`.
+3. Select this repo.
+4. Render will create:
+   - one web service: `bluecurrent-pool-ops`
+   - one Postgres database: `bluecurrent-pool-ops-db`
+5. Fill in the blank env vars if you want live integrations:
+   - `MAPBOX_ACCESS_TOKEN`
+   - `QBO_CLIENT_ID`
+   - `QBO_CLIENT_SECRET`
+   - `QBO_REDIRECT_URI`
+6. Deploy.
+
+Notes:
+- All app data should use `DATABASE_URL` on Render Postgres for persistence.
+- The app's built-in login is the password protection.
+- `QBO_REDIRECT_URI` should be set to `https://YOUR-RENDER-URL/api/integrations/quickbooks/callback` after Render assigns your URL.
 
 ## Frontend build
 
