@@ -268,6 +268,10 @@ h3 {
   grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
 }
 
+.hero-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .portal-grid {
   grid-template-columns: minmax(300px, 0.75fr) minmax(0, 1.25fr);
 }
@@ -323,6 +327,24 @@ h3 {
 .stack-list {
   display: grid;
   gap: 0.75rem;
+}
+
+.dispatch-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.dispatch-summary-card {
+  padding: 0.95rem 1rem;
+  border-radius: 22px;
+  border: 1px solid rgba(56, 189, 248, 0.14);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.dispatch-summary-card h3 {
+  margin-top: 0.15rem;
+  font-size: 1.35rem;
 }
 
 .workspace-tabs {
@@ -651,6 +673,10 @@ h3 {
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
+.route-card .metric-grid {
+  margin-bottom: 0.7rem;
+}
+
 .route-card::after {
   content: "";
   position: absolute;
@@ -687,6 +713,29 @@ h3 {
 .route-path {
   display: grid;
   gap: 0.7rem;
+}
+
+.route-preview-list {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
+}
+
+.route-preview-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.65rem 0;
+  border-top: 1px solid rgba(56, 189, 248, 0.12);
+}
+
+.route-preview-more {
+  margin: 0.2rem 0 0;
+}
+
+.compact-pill-row {
+  gap: 0.45rem;
 }
 
 .path-stop {
@@ -756,6 +805,10 @@ h3 {
 .employee-selector-card .profile-avatar {
   width: 3rem;
   height: 3rem;
+}
+
+.integration-panel {
+  align-content: start;
 }
 
 .tab-row {
@@ -1069,6 +1122,7 @@ select:focus {
   .hero-grid,
   .map-grid,
   .dashboard-grid,
+  .dispatch-summary-grid,
   .portal-grid {
     grid-template-columns: 1fr;
   }

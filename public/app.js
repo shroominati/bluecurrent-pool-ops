@@ -64,6 +64,7 @@ const refs = {
   kpiGrid: document.getElementById("kpiGrid"),
   workspaceTabs: document.getElementById("workspaceTabs"),
   workspacePanels: Array.from(document.querySelectorAll("[data-workspace-panel]")),
+  dispatchSummary: document.getElementById("dispatchSummary"),
   economicsSummary: document.getElementById("economicsSummary"),
   economicsBoard: document.getElementById("economicsBoard"),
   expenseMixBoard: document.getElementById("expenseMixBoard"),
@@ -685,6 +686,71 @@ function renderKpis() {
     .join("");
 }
 
+function renderDispatchSummary() {
+  if (!refs.dispatchSummary) {
+    return;
+  }
+
+  const dashboard = state.overview?.dashboard;
+  const plans = state.overview?.routePlans || [];
+  const focusPlan = plans.find((plan) => plan.employeeId === state.activeMapEmployeeId) || plans[0] || null;
+  const focusEmployee = state.overview?.employees?.find((entry) => entry.id === focusPlan?.employeeId) || null;
+  const liveCount = (state.overview?.liveTracking?.positions || []).length;
+  const workflow = state.overview?.workflowHub;
+  const economics = state.overview?.expenseHub;
+
+  if (!dashboard) {
+    refs.dispatchSummary.innerHTML = "";
+    return;
+  }
+
+  const cards = [
+    {
+      label: "Fleet",
+      value: `${plans.length} routes`,
+      detail: `${dashboard.totalPoolsDue} due pools • ${liveCount} live techs`,
+    },
+    {
+      label: "Focused tech",
+      value: focusPlan ? focusPlan.employeeName : "No route",
+      detail: focusPlan
+        ? `${focusPlan.totalPools} stops • ${focusPlan.totalMiles} mi • ${focusPlan.fuelGallons} gal`
+        : "Pick a route card or map marker to focus one employee.",
+    },
+    {
+      label: "Execution",
+      value: `${dashboard.completedPools} completed`,
+      detail: `${formatMoney(dashboard.averageCostPerJob || 0)} avg job cost • ${dashboard.lowChlorineJobs || 0} low chlorine`,
+    },
+    {
+      label: "Workflow",
+      value: `${workflow?.totalOpen || 0} open`,
+      detail: `${workflow?.sourceName || "No source"} • ${economics?.categoryTotals?.length || 0} spend categories`,
+    },
+  ];
+
+  refs.dispatchSummary.innerHTML = cards
+    .map(
+      (card) => `
+        <article class="dispatch-summary-card">
+          <p class="mini-label">${escapeHtml(card.label)}</p>
+          <h3>${escapeHtml(card.value)}</h3>
+          <p class="meta-copy">${escapeHtml(card.detail)}</p>
+          ${
+            card.label === "Focused tech" && focusEmployee
+              ? `<div class="pill-row compact-pill-row">
+                  <span class="pill">${escapeHtml(focusEmployee.role)}</span>
+                  <span class="pill">${heartbeatTrailForEmployee(focusEmployee.id).length} pings</span>
+                  <span class="pill">${formatPercent(focusPlan?.capacityUse || 0)} capacity</span>
+                </div>`
+              : ""
+          }
+        </article>
+      `,
+    )
+    .join("");
+}
+
 function renderWorkspaceTabs() {
   if (!refs.workspaceTabs) {
     return;
@@ -1009,37 +1075,40 @@ function renderRouteBoard() {
               <div><label>Capacity</label><strong>${formatPercent(plan.capacityUse)}</strong></div>
             </div>
             <p class="meta-copy">Optimized for least fuel + time loss via ${escapeHtml(plan.optimization?.heuristic || plan.routeMode)}.</p>
-            ${
-              plan.stops.some((stop) => stop.customerScheduleRequested)
-                ? `<p class="meta-copy">${plan.stops.filter((stop) => stop.customerScheduleRequested).length} stop(s) were auto-inserted from customer schedule requests.</p>`
-                : ""
-            }
-            <div class="route-path">
-            ${plan.stops
-              .map(
-                (stop) => `
-                  <div class="path-stop">
-                    <span class="path-index">${stop.sequence}</span>
-                    <div>
-                      <strong>${escapeHtml(stop.customerName)}</strong>
-                      <p>${escapeHtml(stop.address)}</p>
-                      <p class="route-meta">${stop.milesFromPrev} mi from previous • ${stop.driveMinutesFromPrev} min drive • ${stop.serviceMinutes} min service</p>
-                      ${
-                        stop.workflowLabel
-                          ? `<p class="meta-copy">${escapeHtml(stop.workflowLabel)} • ${escapeHtml(stop.workflowStatus || "queued")}</p>`
-                          : ""
-                      }
-                      ${
-                        stop.customerScheduleRequested
-                          ? `<p class="meta-copy">Customer schedule automation${stop.customerRequestWindow ? ` • prefers ${escapeHtml(stop.customerRequestWindow)}` : ""}</p>`
-                          : ""
-                      }
+            <div class="pill-row compact-pill-row">
+              ${
+                plan.stops.some((stop) => stop.customerScheduleRequested)
+                  ? `<span class="pill">${plan.stops.filter((stop) => stop.customerScheduleRequested).length} customer schedule</span>`
+                  : ""
+              }
+              ${
+                plan.stops.some((stop) => stop.workflowLabel)
+                  ? `<span class="pill">${plan.stops.filter((stop) => stop.workflowLabel).length} workflow stop${plan.stops.filter((stop) => stop.workflowLabel).length === 1 ? "" : "s"}</span>`
+                  : ""
+              }
+              <span class="pill">${heartbeatTrailForEmployee(plan.employeeId).length} live pings</span>
+            </div>
+            <div class="route-preview-list">
+              ${plan.stops
+                .slice(0, 3)
+                .map(
+                  (stop) => `
+                    <div class="route-preview-row">
+                      <span class="path-index">${stop.sequence}</span>
+                      <div>
+                        <strong>${escapeHtml(stop.customerName)}</strong>
+                        <p class="meta-copy">${stop.milesFromPrev} mi • ${stop.driveMinutesFromPrev} min • ${stop.serviceMinutes} min service</p>
+                      </div>
                     </div>
-                  </div>
-                `,
-              )
-              .join("")}
-          </div>
+                  `,
+                )
+                .join("")}
+              ${
+                plan.stops.length > 3
+                  ? `<p class="meta-copy route-preview-more">+${plan.stops.length - 3} more stops in the focused route rail</p>`
+                  : ""
+              }
+            </div>
         </article>
       `,
     )
@@ -1844,6 +1913,7 @@ function renderOverview() {
   renderTopbar();
   renderHero();
   renderKpis();
+  renderDispatchSummary();
   renderWorkspaceTabs();
   applyWorkspaceVisibility();
   renderFleetMap();

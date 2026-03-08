@@ -120,66 +120,6 @@
             </div>
             <div id="recommendations" class="recommendation-list"></div>
           </article>
-
-          <article class="panel integration-panel">
-            <div class="section-top">
-              <div>
-                <p class="mini-label">Integrations</p>
-                <h2>QuickBooks + Routing + Workflow</h2>
-              </div>
-            </div>
-            <p id="integrationCopy" class="meta-copy"></p>
-            <div class="action-stack">
-              <button id="quickbooksConnectBtn" class="btn btn-secondary manager-only" type="button">
-                Connect QuickBooks
-              </button>
-              <button id="quickbooksDisconnectBtn" class="btn btn-ghost manager-only" type="button">
-                Disconnect QuickBooks
-              </button>
-            </div>
-            <form id="workflowSourceForm" class="form-grid manager-only">
-              <div class="split-grid">
-                <label class="field">
-                  Workflow source
-                  <input id="workflowSourceName" name="sourceName" placeholder="ServiceTitan bridge" />
-                </label>
-                <label class="field">
-                  Source type
-                  <select id="workflowSourceType" name="sourceType">
-                    <option value="json-url">JSON feed</option>
-                    <option value="postgres">Postgres</option>
-                  </select>
-                </label>
-              </div>
-              <label class="field">
-                Feed URL
-                <input id="workflowFeedUrl" name="feedUrl" placeholder="https://ops.example.com/work-orders.json" />
-              </label>
-              <label class="field">
-                Database connection string
-                <input
-                  id="workflowConnectionString"
-                  name="connectionString"
-                  placeholder="postgres://user:pass@host:5432/dbname"
-                />
-              </label>
-              <label class="field">
-                SQL query
-                <textarea
-                  id="workflowSqlQuery"
-                  name="sqlQuery"
-                  rows="6"
-                  placeholder="SELECT work_order_id AS external_id, customer_name, address, latitude AS lat, longitude AS lon, service_minutes, service_date, priority, status, notes FROM work_orders WHERE service_date >= CURRENT_DATE;"
-                ></textarea>
-              </label>
-              <div class="action-stack">
-                <button id="workflowSaveBtn" class="btn btn-secondary" type="submit">Save Workflow Source</button>
-                <button id="workflowSyncBtn" class="btn btn-primary" type="button">Sync Workflow</button>
-              </div>
-            </form>
-            <p id="workflowSyncSummary" class="meta-copy"></p>
-            <div id="integrationNotes" class="stack-list"></div>
-          </article>
         </section>
 
         <section class="kpi-grid internal-only" id="kpiGrid"></section>
@@ -198,6 +138,18 @@
         </section>
 
         <div class="workspace-panel-stack" data-workspace-panel="dispatch">
+        <section class="dashboard-grid">
+          <article class="panel wide-panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Dispatch snapshot</p>
+                <h2>What needs attention right now</h2>
+              </div>
+            </div>
+            <div id="dispatchSummary" class="dispatch-summary-grid"></div>
+          </article>
+        </section>
+
         <section class="dashboard-grid">
           <article class="panel">
             <div class="section-top">
@@ -465,6 +417,66 @@
 
         <div class="workspace-panel-stack hidden" data-workspace-panel="admin">
         <section class="dashboard-grid">
+          <article class="panel integration-panel">
+            <div class="section-top">
+              <div>
+                <p class="mini-label">Integrations</p>
+                <h2>QuickBooks + Routing + Workflow</h2>
+              </div>
+            </div>
+            <p id="integrationCopy" class="meta-copy"></p>
+            <div class="action-stack">
+              <button id="quickbooksConnectBtn" class="btn btn-secondary manager-only" type="button">
+                Connect QuickBooks
+              </button>
+              <button id="quickbooksDisconnectBtn" class="btn btn-ghost manager-only" type="button">
+                Disconnect QuickBooks
+              </button>
+            </div>
+            <form id="workflowSourceForm" class="form-grid manager-only">
+              <div class="split-grid">
+                <label class="field">
+                  Workflow source
+                  <input id="workflowSourceName" name="sourceName" placeholder="ServiceTitan bridge" />
+                </label>
+                <label class="field">
+                  Source type
+                  <select id="workflowSourceType" name="sourceType">
+                    <option value="json-url">JSON feed</option>
+                    <option value="postgres">Postgres</option>
+                  </select>
+                </label>
+              </div>
+              <label class="field">
+                Feed URL
+                <input id="workflowFeedUrl" name="feedUrl" placeholder="https://ops.example.com/work-orders.json" />
+              </label>
+              <label class="field">
+                Database connection string
+                <input
+                  id="workflowConnectionString"
+                  name="connectionString"
+                  placeholder="postgres://user:pass@host:5432/dbname"
+                />
+              </label>
+              <label class="field">
+                SQL query
+                <textarea
+                  id="workflowSqlQuery"
+                  name="sqlQuery"
+                  rows="6"
+                  placeholder="SELECT work_order_id AS external_id, customer_name, address, latitude AS lat, longitude AS lon, service_minutes, service_date, priority, status, notes FROM work_orders WHERE service_date >= CURRENT_DATE;"
+                ></textarea>
+              </label>
+              <div class="action-stack">
+                <button id="workflowSaveBtn" class="btn btn-secondary" type="submit">Save Workflow Source</button>
+                <button id="workflowSyncBtn" class="btn btn-primary" type="button">Sync Workflow</button>
+              </div>
+            </form>
+            <p id="workflowSyncSummary" class="meta-copy"></p>
+            <div id="integrationNotes" class="stack-list"></div>
+          </article>
+
           <article class="panel">
             <div class="section-top">
               <div>
